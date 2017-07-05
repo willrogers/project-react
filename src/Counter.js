@@ -5,17 +5,7 @@ import React from 'react';
  *   */
 
 
-/*  class Counter extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-  }
- 
-*/
-
-
+//Constructor, intiialises counter as 0
 var Counter = React.createClass({
 	getInitialState: function(){
 		return {
@@ -25,29 +15,13 @@ var Counter = React.createClass({
 	},
 
 
-
-
-
-/*  render() {
-    return (
-
-    <button onClick={() => {this.setState({ count: this.state.count + 1 });
-        }}>
-        Count: {this.state.count}
-      </button> 
- 
-
-      
-    );
-  }
-*/
-
+//Eventhandler for button click
 handleChange: function(){
 	this.setState({ count: this.state.count+1  })
 },
 
 
-
+//Render the button with the count dispayed inside
 render: function(){
 	return(
 		<div>
@@ -57,9 +31,6 @@ render: function(){
 		</div>		
 		)
 }
-
-
-
 });
 
 

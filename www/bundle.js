@@ -9756,27 +9756,32 @@ module.exports = getHostComponentFromComposite;
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(83);
-(function webpackMissingModule() { throw new Error("Cannot find module \"version\""); }());
+module.exports = __webpack_require__(83);
 
 
 /***/ }),
 /* 83 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Counter__ = __webpack_require__(185);
 
 
+var _react = __webpack_require__(49);
 
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(99);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Counter = __webpack_require__(185);
+
+var _Counter2 = _interopRequireDefault(_Counter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
-  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Counter__["a" /* default */]), document.getElementById('mount'));
+  _reactDom2.default.render(_react2.default.createElement(_Counter2.default), document.getElementById('mount'));
 });
 
 /***/ }),
@@ -22407,36 +22412,78 @@ module.exports = ReactDOMInvalidARIAHook;
 
 /***/ }),
 /* 185 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(49);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  *  * A counter button: tap the button to increase the count.
  *   */
-class Counter extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+
+/*  class Counter extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 0
+      count: 0,
     };
   }
+ 
+*/
 
-  render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'button',
-      { onClick: () => {
-          this.setState({ count: this.state.count + 1 });
-        } },
-      'Count: ',
-      this.state.count
+var Counter = _react2.default.createClass({
+  displayName: 'Counter',
+
+  getInitialState: function getInitialState() {
+    return {
+      count: 0
+    };
+  },
+
+  /*  render() {
+      return (
+  
+      <button onClick={() => {this.setState({ count: this.state.count + 1 });
+          }}>
+          Count: {this.state.count}
+        </button> 
+   
+  
+        
+      );
+    }
+  */
+
+  handleChange: function handleChange() {
+    this.setState({ count: this.state.count + 1 });
+  },
+
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'button',
+        { onClick: this.handleChange },
+        'Count: ',
+        this.state.count
+      )
     );
   }
-}
-/* harmony default export */ __webpack_exports__["a"] = (Counter);
+
+});
+
+exports.default = Counter;
 
 /***/ })
 /******/ ]);
