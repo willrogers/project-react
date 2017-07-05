@@ -5,7 +5,14 @@ import HelloUser from './HelloUser';
  
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
-    document.getElementById('mount')
-	
+	React.createElement(Counter),
+	document.getElementById('countMount')
   );
+
+  ReactDOM.render(
+    React.createElement(HelloUser),
+    document.getElementById('helloMount')
+  );
+
 });
+
