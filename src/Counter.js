@@ -15,23 +15,24 @@ var Counter = React.createClass({
 	},
 
 
+
 //Eventhandler for button click
-handleChange: function(){
+handleClick: function(){
 	this.setState({ count: this.state.count+1  })
 },
+
 
 
 //Render the button with the count dispayed inside
 render: function(){
 	return(
 		<div>
-			<button onClick={this.handleChange}>
+			<button onClick={this.handleClick}>
 				Count: {this.state.count}
 			</button>
 		</div>		
 		)
 }
 });
-
 
 export default Counter;
