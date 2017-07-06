@@ -16,7 +16,7 @@ var Counter = React.createClass({
 
 
 
-//Eventhandler for button click
+//Eventhandler for button click, increases the count property by 1
 handleClick: function(){
 	this.setState({ count: this.state.count+1  })
 },

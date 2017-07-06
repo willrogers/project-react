@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Counter from './Counter';
 import HelloUser from './HelloUser';
 
+//Wrapper component to contain the two children components, HelloUser and
+// Counter. Default values are given here for initialisation.
 class App extends React.Component{
 	
 	render() {
@@ -15,6 +17,10 @@ class App extends React.Component{
 	}
 }
 
+
+//Event handler fires when actual DOM is loaded, upon which it calls the
+//ReactDOM.render method, with the App component and the HTML element to
+//load it to, in this case the div we have called 'mount'
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
     <App/>,
