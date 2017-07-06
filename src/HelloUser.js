@@ -18,7 +18,7 @@ var HelloUser = React.createClass({
 	},
 
 
-//Produces an input box that, when a user puts data in, handleChange is called
+//Produces an input box that, when a user enters data, calls handleChange
 	render:function(){
 		return(
 		<div> Hello {this.state.name} <br/>
