@@ -9792,6 +9792,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//Wrapper component to contain the two children components, HelloUser and
+// Counter. Default values are given here for initialisation.
 var App = function (_React$Component) {
 	_inherits(App, _React$Component);
 
@@ -9815,6 +9817,11 @@ var App = function (_React$Component) {
 
 	return App;
 }(_react2.default.Component);
+
+//Event handler fires when actual DOM is loaded, upon which it calls the
+//ReactDOM.render method, with the App component and the HTML element to
+//load it to, in this case the div we have called 'mount'
+
 
 document.addEventListener('DOMContentLoaded', function () {
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('mount'));
@@ -22477,7 +22484,7 @@ var Counter = _react2.default.createClass({
 		};
 	},
 
-	//Eventhandler for button click
+	//Eventhandler for button click, increases the count property by 1
 	handleClick: function handleClick() {
 		this.setState({ count: this.state.count + 1 });
 	},
@@ -22516,14 +22523,22 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//The HelloUser component: Displays the username in a Hello World.
 var HelloUser = _react2.default.createClass({
 	displayName: 'HelloUser',
 
 
+	//Set the initial state: empty to begin with 
 	getInitialState: function getInitialState() {
 		return {
-			name: 'Benedict Wagnall'
+			name: 'THIS IS NOT YOUR NAME'
 		};
+	},
+
+	handleChange: function handleChange(e) {
+		this.setState({
+			name: e.target.value
+		});
 	},
 
 	render: function render() {
@@ -22532,7 +22547,11 @@ var HelloUser = _react2.default.createClass({
 			null,
 			' Hello ',
 			this.state.name,
-			'  '
+			' ',
+			_react2.default.createElement('br', null),
+			'Enter Your name here:',
+			_react2.default.createElement('br', null),
+			_react2.default.createElement('input', { type: 'text', name: this.state.name, onChange: this.handleChange })
 		);
 	}
 });
