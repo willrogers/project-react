@@ -22530,9 +22530,9 @@ var HelloUser = _react2.default.createClass({
 		return _react2.default.createElement(
 			'div',
 			null,
-			' Hello, ',
+			' Hello ',
 			this.state.name,
-			' '
+			'  '
 		);
 	}
 });
