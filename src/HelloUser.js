@@ -11,6 +11,7 @@ var HelloUser = React.createClass({
 	render:function(){
 		return(
 			<div> Hello, {this.state.name} </div>
+
 		)		
 	}
 });
