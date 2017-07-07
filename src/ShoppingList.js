@@ -2,6 +2,7 @@ import React from 'react';
 
 //Parent Component
 var ShoppingList =  React.createClass({
+
 	//Intialise an empty list called listItems
 	getInitialState: function(){
 		return{
@@ -16,7 +17,7 @@ var ShoppingList =  React.createClass({
 		});
 	},
 	
-
+	//The parent component simply contains the two children
 	render: function(){
 		return(
 			<div> Add an item to your List:
@@ -27,8 +28,11 @@ var ShoppingList =  React.createClass({
 	}
 });
 
+
+
 //Child component
 var AddItem = React.createClass ({
+
 	//Initialise the new item as empty
 	getInitialState: function(){
 		return{
@@ -51,7 +55,9 @@ var AddItem = React.createClass ({
 		});
 	
 	},
-
+	
+	//An input box that updates the new item string, and a button that sends it to
+	//the handler function.
 	render: function(){
 		return(
 			<div>
@@ -62,6 +68,8 @@ var AddItem = React.createClass ({
 
 	}
 });
+
+
 
 //Child component, displays output from adding items.
 var ShowList = React.createClass ({ 
