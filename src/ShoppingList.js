@@ -1,19 +1,21 @@
 import React from 'react';
 
-
+//Parent Component
 var ShoppingList =  React.createClass({
-
+	//Intialise an empty list called listItems
 	getInitialState: function(){
 		return{
 			listItems: [],
 		}
 	},
-
+	
+	//Add a new item to the list
 	addItem: function(item){
 		this.setState({
 			listItems: this.state.listItems.concat([item])		
 		});
 	},
+	
 
 	render: function(){
 		return(
@@ -25,20 +27,23 @@ var ShoppingList =  React.createClass({
 	}
 });
 
-
+//Child component
 var AddItem = React.createClass ({
+	//Initialise the new item as empty
 	getInitialState: function(){
 		return{
 			newItem: ''
 		}
 	},
 
+	//Set new item to user input
 	updateNewItem: function(userInputNewItem){
 		this.setState({
 			newItem: userInputNewItem.target.value
 		});
 	},
 	
+	//Event handler for adding a new item. Pass the param then clear.
 	handleAddNew: function(){
 		this.props.addNew(this.state.newItem);
 		this.setState({
@@ -48,7 +53,6 @@ var AddItem = React.createClass ({
 	},
 
 	render: function(){
-
 		return(
 			<div>
 				<input type="text" value={this.state.newItem} onChange={this.updateNewItem} />
@@ -59,7 +63,7 @@ var AddItem = React.createClass ({
 	}
 });
 
-
+//Child component, displays output from adding items.
 var ShowList = React.createClass ({ 
 	render: function(){
 		var listElements = this.props.items.map(function(item){
