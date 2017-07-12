@@ -67,7 +67,7 @@ var AddItem = React.createClass ({
           type="text"
           value={this.state.newItem}
           onChange={this.updateNewItem}
-/>
+        />
         <button onClick={this.handleAddNew}> Add item </button>
       </div>
     )
