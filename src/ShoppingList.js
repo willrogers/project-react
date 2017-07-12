@@ -56,12 +56,18 @@ var AddItem = React.createClass ({
 
   },
 
+
+
   //An input box that updates the new item string, and a button that sends it to
   //the handler function.
   render: function(){
     return(
       <div>
-        <input type="text" value={this.state.newItem} onChange={this.updateNewItem} />
+        <input
+          type="text"
+          value={this.state.newItem}
+          onChange={this.updateNewItem}
+/>
         <button onClick={this.handleAddNew}> Add item </button>
       </div>
     )

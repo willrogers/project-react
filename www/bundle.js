@@ -9799,28 +9799,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //Wrapper component to contain the two children components, HelloUser and
 // Counter. Default values are given here for initialisation.
 var App = function (_React$Component) {
-	_inherits(App, _React$Component);
+  _inherits(App, _React$Component);
 
-	function App() {
-		_classCallCheck(this, App);
+  function App() {
+    _classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+  }
 
-	_createClass(App, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(_HelloUser2.default, { name: this.props.name }),
-				_react2.default.createElement(_Counter2.default, { count: this.props.count }),
-				_react2.default.createElement(_ShoppingList2.default /*SOME STUFF IN HERE*/, null)
-			);
-		}
-	}]);
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_HelloUser2.default, { name: this.props.name }),
+        _react2.default.createElement(_Counter2.default, { count: this.props.count }),
+        _react2.default.createElement(_ShoppingList2.default /*SOME STUFF IN HERE*/, null)
+      );
+    }
+  }]);
 
-	return App;
+  return App;
 }(_react2.default.Component);
 
 //Event handler fires when actual DOM is loaded, upon which it calls the
@@ -9829,7 +9829,7 @@ var App = function (_React$Component) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('mount'));
+  _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('mount'));
 });
 
 /***/ }),
@@ -22466,7 +22466,7 @@ module.exports = ReactDOMInvalidARIAHook;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _react = __webpack_require__(24);
@@ -22481,32 +22481,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //Constructor, intiialises counter as 0
 var Counter = _react2.default.createClass({
-	displayName: 'Counter',
+  displayName: 'Counter',
 
-	getInitialState: function getInitialState() {
-		return {
-			count: 0
-		};
-	},
+  getInitialState: function getInitialState() {
+    return {
+      count: 0
+    };
+  },
 
-	//Eventhandler for button click, increases the count property by 1
-	handleClick: function handleClick() {
-		this.setState({ count: this.state.count + 1 });
-	},
+  //Eventhandler for button click, increases the count property by 1
+  handleClick: function handleClick() {
+    this.setState({ count: this.state.count + 1 });
+  },
 
-	//Render the button with the count dispayed inside
-	render: function render() {
-		return _react2.default.createElement(
-			'div',
-			null,
-			_react2.default.createElement(
-				'button',
-				{ onClick: this.handleClick },
-				'Count: ',
-				this.state.count
-			)
-		);
-	}
+  //Render the button with the count dispayed inside
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'button',
+        { onClick: this.handleClick },
+        'Count: ',
+        this.state.count
+      )
+    );
+  }
 });
 
 exports.default = Counter;
@@ -22519,7 +22519,7 @@ exports.default = Counter;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _react = __webpack_require__(24);
@@ -22530,37 +22530,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //The HelloUser component: Displays the username in a Hello World.
 var HelloUser = _react2.default.createClass({
-	displayName: 'HelloUser',
+  displayName: 'HelloUser',
 
 
-	//Set the initial state: empty to begin with 
-	getInitialState: function getInitialState() {
-		return {
-			name: ''
-		};
-	},
+  //Set the initial state: empty to begin with 
+  getInitialState: function getInitialState() {
+    return {
+      name: ''
+    };
+  },
 
-	//Sets the name prop/state to the supplied parameter - (e)
-	handleChange: function handleChange(e) {
-		this.setState({
-			name: e.target.value
-		});
-	},
+  //Sets the name prop/state to the supplied parameter - (e)
+  handleChange: function handleChange(e) {
+    this.setState({
+      name: e.target.value
+    });
+  },
 
-	//Produces an input box that, when a user enters data, calls handleChange
-	render: function render() {
-		return _react2.default.createElement(
-			'div',
-			null,
-			' Hello ',
-			this.state.name,
-			' ',
-			_react2.default.createElement('br', null),
-			'Enter Your name here:',
-			_react2.default.createElement('br', null),
-			_react2.default.createElement('input', { type: 'text', name: this.state.name, onChange: this.handleChange })
-		);
-	}
+  //Produces an input box that, when a user enters data, calls handleChange
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      null,
+      ' Hello ',
+      this.state.name,
+      ' ',
+      _react2.default.createElement('br', null),
+      'Enter Your name here:',
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('input', { type: 'text', name: this.state.name, onChange: this.handleChange })
+    );
+  }
 });
 
 exports.default = HelloUser;
@@ -22573,7 +22573,7 @@ exports.default = HelloUser;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _react = __webpack_require__(24);
@@ -22584,103 +22584,119 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //Parent Component
 var ShoppingList = _react2.default.createClass({
-	displayName: 'ShoppingList',
+  displayName: 'ShoppingList',
 
-	//Intialise an empty list called listItems
-	getInitialState: function getInitialState() {
-		return {
-			listItems: []
-		};
-	},
 
-	//Add a new item to the list
-	addItem: function addItem(item) {
-		this.setState({
-			listItems: this.state.listItems.concat([item])
-		});
-	},
+  //Intialise an empty list called listItems
+  getInitialState: function getInitialState() {
+    return {
+      listItems: []
+    };
+  },
 
-	render: function render() {
-		return _react2.default.createElement(
-			'div',
-			null,
-			' Add an item to your List:',
-			_react2.default.createElement(AddItem, { addNew: this.addItem }),
-			_react2.default.createElement(ShowList, { items: this.state.listItems })
-		);
-	}
+  //Add a new item to the list
+  addItem: function addItem(item) {
+    this.setState({
+      listItems: this.state.listItems.concat([item])
+    });
+  },
+
+  //The parent component simply contains the two children
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      null,
+      ' Add an item to your List:',
+      _react2.default.createElement(AddItem, { addNew: this.addItem }),
+      _react2.default.createElement(ShowList, { items: this.state.listItems })
+    );
+  }
 });
 
 //Child component
 var AddItem = _react2.default.createClass({
-	displayName: 'AddItem',
+  displayName: 'AddItem',
 
-	//Initialise the new item as empty
-	getInitialState: function getInitialState() {
-		return {
-			newItem: ''
-		};
-	},
 
-	//Set new item to user input
-	updateNewItem: function updateNewItem(userInputNewItem) {
-		this.setState({
-			newItem: userInputNewItem.target.value
-		});
-	},
+  //Initialise the new item as empty
+  getInitialState: function getInitialState() {
+    return {
+      newItem: ''
+    };
+  },
 
-	//Event handler for adding a new item. Pass the param then clear.
-	handleAddNew: function handleAddNew() {
-		this.props.addNew(this.state.newItem);
-		this.setState({
-			newItem: ''
-		});
-	},
+  //Set new item to user input
+  updateNewItem: function updateNewItem(userInputNewItem) {
+    this.setState({
+      newItem: userInputNewItem.target.value
+    });
+  },
 
-	render: function render() {
-		return _react2.default.createElement(
-			'div',
-			null,
-			_react2.default.createElement('input', { type: 'text', value: this.state.newItem, onChange: this.updateNewItem }),
-			_react2.default.createElement(
-				'button',
-				{ onClick: this.handleAddNew },
-				' Add item '
-			)
-		);
-	}
+  //Event handler for adding a new item. Pass the param then clear.
+  handleAddNew: function handleAddNew() {
+    this.props.addNew(this.state.newItem);
+    this.setState({
+      newItem: ''
+    });
+  },
+
+  handleKeyPress: function handleKeyPress(event) {
+    if (event.key == "Enter") {
+      this.handleAddNew;
+    }
+  },
+
+  //An input box that updates the new item string, and a button that sends it to
+  //the handler function.
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement('input', {
+        type: 'text',
+        value: this.state.newItem,
+        onChange: this.updateNewItem,
+        onKeyPress: this.handleKeyPress
+      }),
+      _react2.default.createElement(
+        'button',
+        { onClick: this.handleAddNew },
+        ' Add item '
+      )
+    );
+  }
 });
 
 //Child component, displays output from adding items.
 var ShowList = _react2.default.createClass({
-	displayName: 'ShowList',
+  displayName: 'ShowList',
 
-	render: function render() {
-		var listElements = this.props.items.map(function (item) {
-			return _react2.default.createElement(
-				'li',
-				null,
-				' ',
-				item,
-				' '
-			);
-		});
+  render: function render() {
+    var listElements = this.props.items.map(function (item) {
+      return _react2.default.createElement(
+        'li',
+        null,
+        ' ',
+        item,
+        ' '
+      );
+    });
 
-		return _react2.default.createElement(
-			'div',
-			null,
-			_react2.default.createElement(
-				'h3',
-				null,
-				'Shopping List'
-			),
-			_react2.default.createElement(
-				'ul',
-				null,
-				listElements
-			)
-		);
-	}
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'h3',
+        null,
+        'Shopping List'
+      ),
+      _react2.default.createElement(
+        'ul',
+        null,
+        listElements
+      )
+    );
+  }
 });
 
 exports.default = ShoppingList;
