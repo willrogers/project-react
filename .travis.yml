@@ -4,4 +4,4 @@ node_js:
   - 6
 
 before_install:
-  - export DISPLAY=:99.0
+  - export DISPLAY=:0
