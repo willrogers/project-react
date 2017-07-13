@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-{pattern: 'src/__tests__/**/*'},
+        {pattern: 'src/__tests__/**/*'},
     ],
 
 
@@ -23,17 +23,26 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    plugins: [ 'karma-mocha', 'karma-webpack', 'karma-firefox-launcher'
+    plugins: [ 'karma-mocha', 'karma-webpack', 'karma-firefox-launcher', 'karma-babel-preprocessor'
     ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
+    preprocessors: {'src/**/*.js': ['babel'] },
 
-// preprocessors: [
-//    ]
-//    ,
-
+    babelPreprocessor: {
+        options: {
+            presets: ['es2015'],
+            plugins: ["transform-es2015-modules-umd"]
+        },
+        filename: function(file) {
+            return file.originalPath.replace(/\.js$/, '.es5.js');
+        },
+        sourceFileName: function(file) {
+            return file.originalPath;
+        }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
