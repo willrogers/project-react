@@ -3,7 +3,5 @@ language: node_js
 node_js: 
   - 6
 
-# Without this: ERR - No display specified.
-# With this: ERR - Cannot open display.
-#before_install:
-#  -  export DISPLAY=localhost:0.0
+before_install:
+  -  export DISPLAY=localhost:0.0
