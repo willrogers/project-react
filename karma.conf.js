@@ -23,7 +23,7 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    plugins: [ 'karma-mocha', 'karma-webpack', 'karma-firefox launcher'
+    plugins: [ 'karma-mocha', 'karma-webpack', 'karma-firefox-launcher'
     ],
 
     // preprocess matching files before serving them to the browser
