@@ -22640,12 +22640,6 @@ var AddItem = _react2.default.createClass({
     });
   },
 
-  handleKeyPress: function handleKeyPress(event) {
-    if (event.key == "Enter") {
-      this.handleAddNew;
-    }
-  },
-
   //An input box that updates the new item string, and a button that sends it to
   //the handler function.
   render: function render() {
@@ -22655,8 +22649,7 @@ var AddItem = _react2.default.createClass({
       _react2.default.createElement('input', {
         type: 'text',
         value: this.state.newItem,
-        onChange: this.updateNewItem,
-        onKeyPress: this.handleKeyPress
+        onChange: this.updateNewItem
       }),
       _react2.default.createElement(
         'button',
