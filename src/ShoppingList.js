@@ -63,12 +63,10 @@ var AddItem = React.createClass ({
   render: function(){
     return(
       <div>
-        <input
-          type="text"
-          value={this.state.newItem}
-          onChange={this.updateNewItem}
-        />
-        <button onClick={this.handleAddNew}> Add item </button>
+        <form onSubmit={this.props.handleAddNew}>
+          <input type="text" value={this.state.newItem} onChange={this.updateNewItem} />
+          <button type="submit" onClick={this.handleAddNew}> Add item </button>
+        </form>
       </div>
     )
 

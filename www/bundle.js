@@ -22646,15 +22646,15 @@ var AddItem = _react2.default.createClass({
     return _react2.default.createElement(
       'div',
       null,
-      _react2.default.createElement('input', {
-        type: 'text',
-        value: this.state.newItem,
-        onChange: this.updateNewItem
-      }),
       _react2.default.createElement(
-        'button',
-        { onClick: this.handleAddNew },
-        ' Add item '
+        'form',
+        { onSubmit: this.props.handleAddNew },
+        _react2.default.createElement('input', { type: 'text', value: this.state.newItem, onChange: this.updateNewItem }),
+        _react2.default.createElement(
+          'button',
+          { type: 'submit', onClick: this.handleAddNew },
+          ' Add item '
+        )
       )
     );
   }
