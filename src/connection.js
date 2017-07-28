@@ -1,27 +1,28 @@
+var connection = new WebSocket('ws://localhost:8080/ws')
 
-
-  function fireConnection()
+  export function fireConnection()
   {
-  var connection = new WebSocket('ws://localhost:8080/ws')
+  console.log("helloooooooooo")
+  connection = new WebSocket('ws://localhost:8080/ws')
   }
 
-  connection.onopen = function()
-  {
-    (console.log(this.connection))
+//  connection.onopen = function()
+//  {
+//    (console.log(this.connection))
+//  }
+
+  export function startMalcolmComms(msg){
+    console.log(connection )
+//  connection.send 
   }
 
-  function startMalcolmComms(subRequest){
-    connection.send(subRequest)
-  }
-
-  function killMalcolmComms(unsubRequest){
-    connection.send(unsubRequest)
+  export function killMalcolmComms(msg){
+    connection.send(msg)
   }
 
   connection.onMesssage = function(event)
   {
-    var malcResponse = JSON.parse(event.data)
-
-    SignalComponent.receive(response.value.meta.label)
-    SignalComponent.receive(response.value.value)
+    var response = JSON.parse(event.data)
+    // SignalComponent.receiveUpdate(response.value.meta.label)
+    SignalComponent.receiveUpdate(response.value.value)
   }

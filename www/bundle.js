@@ -22708,6 +22708,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _jsonStore = __webpack_require__(189);
+
+var _connection = __webpack_require__(190);
+
 var _react = __webpack_require__(20);
 
 var _react2 = _interopRequireDefault(_react);
@@ -22719,22 +22723,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var subscribeRequest = JSON.stringify({
-  "typeid": "malcolm:core/Subscribe:1.0",
-  "id": 1,
-  "path": ["HELLO", "signal"]
-});
-
-var unsubscribeRequest = JSON.stringify({
-  "typeid": "malcolm:core/Unsubscribe:1.0",
-  "id": 1
-});
-
-var connection = new WebSocket('ws://localhost:8080/ws');
-connection.onopen = function () {
-  console.log(this.connection);
-};
 
 var SignalComponent = function (_React$Component) {
   _inherits(SignalComponent, _React$Component);
@@ -22751,31 +22739,28 @@ var SignalComponent = function (_React$Component) {
   }
 
   _createClass(SignalComponent, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
-      connection.onopen(console.log(connection));
-      connection.send(subscribeRequest);
-      connection.onmessage = function (evt) {
-        handleUpdate(evt.data);
-      };
+      (0, _connection.fireConnection)();
+      (0, _connection.startMalcolmComms)((0, _jsonStore.getSubRequest)());
     }
   }, {
-    key: "handleUpdate",
-    value: function handleUpdate(malcResponse) {
+    key: 'receiveUpdate',
+    value: function receiveUpdate(malcResponse) {
       this.setState({
-        signal: malcResponse.value.value
+        signal: malcResponse.target.value
       });
     }
   }, {
-    key: "componentWillUnmount",
+    key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      connection.send(unsubscribeRequest);
+      (0, _connection.killMalcolmComms)((0, _jsonStore.getUnsubRequest)());
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
         this.state.signal
       );
@@ -22786,6 +22771,77 @@ var SignalComponent = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = SignalComponent;
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSubRequest = getSubRequest;
+exports.getUnsubRequest = getUnsubRequest;
+var subscribeRequest = JSON.stringify({
+  "typeid": "malcolm:core/Subscribe:1.0",
+  "id": 1,
+  "path": ["HELLO", "signal"]
+});
+
+var unsubscribeRequest = JSON.stringify({
+  "typeid": "malcolm:core/Unsubscribe:1.0",
+  "id": 1
+});
+
+function getSubRequest() {
+  return subscribeRequest;
+}
+
+function getUnsubRequest() {
+  return unsubscribeRequest;
+}
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fireConnection = fireConnection;
+exports.startMalcolmComms = startMalcolmComms;
+exports.killMalcolmComms = killMalcolmComms;
+var connection = new WebSocket('ws://localhost:8080/ws');
+
+function fireConnection() {
+  console.log("helloooooooooo");
+  connection = new WebSocket('ws://localhost:8080/ws');
+}
+
+//  connection.onopen = function()
+//  {
+//    (console.log(this.connection))
+//  }
+
+function startMalcolmComms(msg) {
+  console.log(connection);
+  //  connection.send 
+}
+
+function killMalcolmComms(msg) {
+  connection.send(msg);
+}
+
+connection.onMesssage = function (event) {
+  var response = JSON.parse(event.data);
+  // SignalComponent.receiveUpdate(response.value.meta.label)
+  SignalComponent.receiveUpdate(response.value.value);
+};
 
 /***/ })
 /******/ ]);
