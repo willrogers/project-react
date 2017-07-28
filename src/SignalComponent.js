@@ -46,7 +46,7 @@ export default class SignalComponent extends React.Component{
   {
     this.setState
       ({
-      signal: malcResponse.value.value
+        signal: malcResponse.value.value
       })
   }
 
