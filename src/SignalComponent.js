@@ -10,13 +10,14 @@ export default class SignalComponent extends React.Component{
 
   componentDidMount()
   {
-    startConnection()
+    startConnection(this)
   }
 
 
   receiveUpdate(malcResponse)
   {
-    this.setState({signal: malcResponse.target.value})
+    console.log(malcResponse)
+    this.setState({signal: malcResponse.value})
   }
 
 

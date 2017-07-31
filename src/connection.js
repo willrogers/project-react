@@ -17,7 +17,7 @@ var unsubscribeRequest = JSON.stringify
 
 var connection = new WebSocket('ws://localhost:8080/ws')
 
-  export function startConnection()
+  export function startConnection(component)
   {
 
     connection = new WebSocket('ws://localhost:8080/ws')
@@ -32,9 +32,10 @@ var connection = new WebSocket('ws://localhost:8080/ws')
 
     connection.onmessage = function(event)
     {
-      console.log("onmessage called")
+
       var response = JSON.parse(event.data)
-      SignalComponent.receiveUpdate(response.value.value)
+      console.log(response)
+      component.receiveUpdate(response.value.value)
     }
 
   }
