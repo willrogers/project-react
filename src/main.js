@@ -1,33 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Counter from './Counter'
-import HelloUser from './HelloUser'
-import ShoppingList from './ShoppingList'
 import SignalComponent from './SignalComponent'
+//import Counter from './Counter'
+//import HelloUser from './HelloUser'
+//import ShoppingList from './ShoppingList'
 
-//Wrapper component to contain the two children components, HelloUser and
-// Counter. Default values are given here for initialisation.
+
+
+//Wrapper component
 class App extends React.Component{
-  render() {
-    return(
-      <div>
-        <HelloUser name={this.props.name} />
-        <Counter count={this.props.count} />
-        <ShoppingList />
-        <SignalComponent state={this.props.state} />
-      </div>
-    )
-  }
+    render(){
+        return(<div>
+                   <SignalComponent state={this.props.state} />
+               </div>)
+    }
 }
 
-
-//Event handler fires when actual DOM is loaded, upon which it calls the
-//ReactDOM.render method, with the App component and the HTML element to
-//load it to, in this case the div we have called 'mount'
+//Event handler fires when actual DOM is loaded, calls the ReactDOM.render method
 document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    <App/>,
-    document.getElementById('mount')
-  )
+    ReactDOM.render(
+        <App/>, document.getElementById('mount')
+    )
 })
+
+
+{/*
+<HelloUser name={this.props.name} />
+<Counter count={this.props.count} />
+<ShoppingList />
+*/}
 
