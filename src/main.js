@@ -1,18 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import SignalComponent from './SignalComponent'
-//import Counter from './Counter'
-//import HelloUser from './HelloUser'
-//import ShoppingList from './ShoppingList'
-
-
 
 //Wrapper component
 class App extends React.Component{
     render(){
         return(<div>
-            <SignalComponent state={this.props.state} />
-        </div>)
+                   <SignalComponent state={this.props.state} />
+               </div>)
     }
 }
 
@@ -22,11 +17,3 @@ document.addEventListener('DOMContentLoaded', function() {
         <App/>, document.getElementById('mount')
     )
 })
-
-
-{/*
-<HelloUser name={this.props.name} />
-<Counter count={this.props.count} />
-<ShoppingList />
-*/}
-
