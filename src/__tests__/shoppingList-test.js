@@ -1,4 +1,4 @@
-import Ract from 'react'
+import React from 'react'
 import ShoppingList from './ShoppingList'
 
 
