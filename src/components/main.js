@@ -8,15 +8,15 @@ import ShoppingList from './ShoppingList'
 // Counter. Default values are given here for initialisation.
 class App extends React.Component{
 	
-  render() {
-    return(
-      <div>
-        <HelloUser name={this.props.name} />	
-        <Counter count={this.props.count} />
-        <ShoppingList  /*SOME STUFF IN HERE*/ />
-      </div>
-    )
-  }
+    render() {
+        return(
+            <div>
+                <HelloUser name={this.props.name} />	
+                <Counter count={this.props.count} />
+                <ShoppingList  /*SOME STUFF IN HERE*/ />
+            </div>
+        )
+    }
 }
 
 
@@ -24,9 +24,9 @@ class App extends React.Component{
 //ReactDOM.render method, with the App component and the HTML element to
 //load it to, in this case the div we have called 'mount'
 document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    <App/>,
-    document.getElementById('mount')
-  )
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('mount')
+    )
 })
 

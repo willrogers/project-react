@@ -16,7 +16,7 @@ module.exports = {
         "eslint-plugin-react"
     ],
     "rules": {
-        "indent": ["error",2],
+        "indent": ["error",4],
         "react/jsx-uses-vars": ["error"],
         "linebreak-style": [
             "error",

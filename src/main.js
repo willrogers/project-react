@@ -11,8 +11,8 @@ import SignalComponent from './SignalComponent'
 class App extends React.Component{
     render(){
         return(<div>
-                   <SignalComponent state={this.props.state} />
-               </div>)
+            <SignalComponent state={this.props.state} />
+        </div>)
     }
 }
 

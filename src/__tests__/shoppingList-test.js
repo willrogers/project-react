@@ -3,7 +3,7 @@ import ShoppingList from './ShoppingList'
 
 
 describe('shoppingList', function () {
-  it('loads as expected', function () {
-    return true
-  })
+    it('loads as expected', function () {
+        return true
+    })
 })
