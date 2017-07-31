@@ -1,42 +1,28 @@
-import { startConnection, killMalcolmComms } from './connection.js'
+import { startMalcolmComms, killMalcolmComms } from './connection.js'
 import React from 'react'
+
 export default class SignalComponent extends React.Component{
 
-  constructor(props)
-  {
-    super(props)
-    this.state={signal:0}
-  }
+     constructor(props){
+         super(props)
+         this.state = {signal: 0}
+     }
 
-  componentDidMount()
-  {
-    startConnection(this)
-  }
+    componentDidMount(){
+         startMalcolmComms(this)
+    }
 
+    receiveUpdate(malcResponse){
+        this.setState( {signal: malcResponse} )
+    }
 
-  receiveUpdate(malcResponse)
-  {
-    console.log(malcResponse)
-    this.setState({signal: malcResponse.value})
-  }
+    componentWillUnmount(){
+        killMalcolmComms()
+    }
 
-
-  componentWillUnmount()
-  {
-    killMalcolmComms()
-  }
-
-
-  render()
-  {
-    return (
-           <div>
-              {
-              this.signal
-              }
-           </div>
-           )
-  }
+    render(){
+        return (<div> {this.state.signal} </div>)
+    }
 }
 
 

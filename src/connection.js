@@ -1,47 +1,19 @@
-import {receiveUpdate} from './SignalComponent.js'
-
-
-var subscribeRequest = JSON.stringify
-   ({
-     "typeid": "malcolm:core/Subscribe:1.0",
-     "id":5,
-     "path": ["HELLO","signal"]
-   })
-
-var unsubscribeRequest = JSON.stringify
-   ({
-     "typeid": "malcolm:core/Unsubscribe:1.0",
-     "id":5 
-   })
-
+import {getSubRequest,getUnsubRequest} from './jsonStore'
 
 var connection = new WebSocket('ws://localhost:8080/ws')
 
-  export function startConnection(component)
-  {
-
-    connection = new WebSocket('ws://localhost:8080/ws')
-
-
-    connection.onopen = function()
-    {
-      console.log("onopen called")
-      connection.send(subscribeRequest)
+export function startMalcolmComms(component){
+    connection.onopen = function(){
+        connection.send(getSubRequest())
     }
 
-
-    connection.onmessage = function(event)
-    {
-
-      var response = JSON.parse(event.data)
-      console.log(response)
-      component.receiveUpdate(response.value.value)
+    connection.onmessage = function(event){
+        var response = JSON.parse(event.data)
+        component.receiveUpdate(response.value.value)
     }
+}
 
-  }
-
-  export function killMalcolmComms()
-  {
-    connection.send(unsubscribeRequest)
-  }
+export function killMalcolmComms(){
+    connection.send(getUnsubRequest())
+}
 
