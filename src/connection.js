@@ -1,28 +1,46 @@
+import {receiveUpdate} from './SignalComponent.js'
+
+
+var subscribeRequest = JSON.stringify
+   ({
+     "typeid": "malcolm:core/Subscribe:1.0",
+     "id":5,
+     "path": ["HELLO","signal"]
+   })
+
+var unsubscribeRequest = JSON.stringify
+   ({
+     "typeid": "malcolm:core/Unsubscribe:1.0",
+     "id":5 
+   })
+
+
 var connection = new WebSocket('ws://localhost:8080/ws')
 
-  export function fireConnection()
+  export function startConnection()
   {
-  console.log("helloooooooooo")
-  connection = new WebSocket('ws://localhost:8080/ws')
+
+    connection = new WebSocket('ws://localhost:8080/ws')
+
+
+    connection.onopen = function()
+    {
+      console.log("onopen called")
+      connection.send(subscribeRequest)
+    }
+
+
+    connection.onmessage = function(event)
+    {
+      console.log("onmessage called")
+      var response = JSON.parse(event.data)
+      SignalComponent.receiveUpdate(response.value.value)
+    }
+
   }
 
-//  connection.onopen = function()
-//  {
-//    (console.log(this.connection))
-//  }
-
-  export function startMalcolmComms(msg){
-    console.log(connection )
-//  connection.send 
-  }
-
-  export function killMalcolmComms(msg){
-    connection.send(msg)
-  }
-
-  connection.onMesssage = function(event)
+  export function killMalcolmComms()
   {
-    var response = JSON.parse(event.data)
-    // SignalComponent.receiveUpdate(response.value.meta.label)
-    SignalComponent.receiveUpdate(response.value.value)
+    connection.send(unsubscribeRequest)
   }
+

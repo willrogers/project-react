@@ -1,36 +1,28 @@
-import {getSubRequest, getUnsubRequest} from './jsonStore.js'
-import { fireConnection, startMalcolmComms, killMalcolmComms } from './connection.js'
+import { startConnection, killMalcolmComms } from './connection.js'
 import React from 'react'
 export default class SignalComponent extends React.Component{
 
   constructor(props)
   {
     super(props)
-    this.state =
-    {
-      signal: 0
-    };
+    this.state={signal:0}
   }
 
   componentDidMount()
   {
-    fireConnection()
-    startMalcolmComms(getSubRequest())
+    startConnection()
   }
 
 
   receiveUpdate(malcResponse)
   {
-    this.setState
-      ({
-       signal: malcResponse.target.value
-      })
+    this.setState({signal: malcResponse.target.value})
   }
 
 
   componentWillUnmount()
   {
-    killMalcolmComms(getUnsubRequest())
+    killMalcolmComms()
   }
 
 
@@ -39,7 +31,7 @@ export default class SignalComponent extends React.Component{
     return (
            <div>
               {
-              this.state.signal
+              this.signal
               }
            </div>
            )
