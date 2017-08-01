@@ -10,12 +10,12 @@ module.exports = function(config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha'],
+        frameworks: [],
 
 
         // list of files / patterns to load in the browser
         files: [
-            {pattern: 'src/__tests__/**/*'},
+        {pattern: 'tests.webpack.js'},
         ],
 
 
@@ -24,17 +24,18 @@ module.exports = function(config) {
         ],
 
         plugins: [
-            'karma-mocha',
             'karma-webpack',
             'karma-firefox-launcher',
             'karma-babel-preprocessor',
-            'karma-chai-plugins'
         ],
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
-        preprocessors: {'src/**/*.js': ['babel'] },
+        preprocessors: {
+             'src/**/*.js': ['babel'],
+             'tests.webpack.js': ['webpack' , 'babel']
+        },
 
         babelPreprocessor: {
             options: {
@@ -60,6 +61,7 @@ module.exports = function(config) {
 
 
         // enable / disable colors in the output (reporters and logs)
+
         colors: true,
 
 
