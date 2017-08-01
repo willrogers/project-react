@@ -3,6 +3,9 @@
 
 const path = require('path')
 
+// Import webpack config from its own config file.
+var webpackConfig = require('./webpack.config.js')
+
 module.exports = function(config) {
     config.set({
 
@@ -33,30 +36,8 @@ module.exports = function(config) {
             }
         },
 
-        webpack: {
-            context: path.join(__dirname, 'src'),
-            entry: [
-                './main.js',
-            ],
-            output: {
-                path: path.join(__dirname, 'www'),
-                filename: 'bundle.js',
-            },
-            module: {
-                rules: [
-                    {
-                        test: /\.js$/,
-                        exclude: /node_modules/,
-                        use:[ 'babel-loader' ],
-                    },
-                ],
-            },
-            resolve: {
-                modules: [
-                    path.join(__dirname, 'node_modules'),
-                ],
-            },
-        },
+        // Use imported webpack config.
+        webpack: webpackConfig,
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
