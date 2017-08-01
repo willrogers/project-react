@@ -5,9 +5,11 @@ import SignalComponent from './SignalComponent'
 //Wrapper component
 class App extends React.Component{
     render(){
-        return(<div>
-                   <SignalComponent state={this.props.state} />
-               </div>)
+        return(
+            <div>
+                <SignalComponent state={this.props.state} />
+            </div>
+        )
     }
 }
 
