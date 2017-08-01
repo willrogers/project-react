@@ -45,11 +45,6 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
-    "karma": "^1.7.0",
-    "karma-babel-preprocessor": "^6.0.1",
-    "karma-firefox-launcher": "^1.0.1",
-    "karma-webpack": "^2.0.4",
-    "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0"
   }
 }
