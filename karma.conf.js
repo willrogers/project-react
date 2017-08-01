@@ -1,8 +1,6 @@
 // Karma configuration
 // Generated on Wed Jul 12 2017 15:45:57 GMT+0100 (BST)
 
-const path = require('path')
-
 // Import webpack config from its own config file.
 var webpackConfig = require('./webpack.config.js')
 
@@ -20,8 +18,7 @@ module.exports = function(config) {
         ],
 
         preprocessors: {
-            'src/**/*.js': [ 'webpack', 'babel'],
-            'tests.webpack.js': [ 'webpack' ]
+            'tests.webpack.js': ['webpack']
         },
 
         babelPreprocessor: {
