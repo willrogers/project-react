@@ -1,0 +1,14 @@
+
+engines:
+  eslint:
+    enabled: true
+
+eslint:
+  enabled: true
+  config:
+    extensions:
+    - .js
+
+ratings:
+   paths:
+   - "src/**.js"
