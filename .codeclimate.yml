@@ -1,14 +1,17 @@
 
 engines:
+
   eslint:
     enabled: true
+    config:
+      extensions:
+      - .js
+    ratings:
+      paths:
+      - "src/**.js"
 
-eslint:
-  enabled: true
-  config:
-    extensions:
-    - .js
-
-ratings:
-   paths:
-   - "src/**.js"
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
