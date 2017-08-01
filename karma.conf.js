@@ -1,5 +1,7 @@
 // Karma configuration
 // Generated on Wed Jul 12 2017 15:45:57 GMT+0100 (BST)
+//
+const path = require('path');
 
 module.exports = function(config) {
   config.set({
@@ -15,7 +17,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        {pattern: 'src/__tests__/**/*'},
+        {pattern: 'tests.webpack.js'},
     ],
 
 
@@ -25,16 +27,15 @@ module.exports = function(config) {
 
     plugins: [ 'karma-mocha', 'karma-webpack', 'karma-firefox-launcher', 'karma-babel-preprocessor'
     ],
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
-    preprocessors: {'src/**/*.js': ['babel'] },
+      preprocessors: {'src/**/*.js': [ 'webpack', 'babel'],
+                      'tests.webpack.js': [ 'webpack' ]},
 
     babelPreprocessor: {
         options: {
-            presets: ['es2015'],
-            plugins: ["transform-es2015-modules-umd"]
+            presets: ['es2015']
         },
         filename: function(file) {
             return file.originalPath.replace(/\.js$/, '.es5.js');
@@ -42,6 +43,31 @@ module.exports = function(config) {
         sourceFileName: function(file) {
             return file.originalPath;
         }
+    },
+
+    webpack: {
+      context: path.join(__dirname, 'src'),
+      entry: [
+        './main.js',
+      ],
+      output: {
+        path: path.join(__dirname, 'www'),
+        filename: 'bundle.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use:[ 'babel-loader' ],
+            },
+          ],
+        },
+      resolve: {
+        modules: [
+          path.join(__dirname, 'node_modules'),
+        ],
+      },
     },
 
     // test results reporter to use
