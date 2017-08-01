@@ -21,7 +21,7 @@ export default class SignalComponent extends React.Component{
     }
 
     render(){
-        return (<div> {this.state.signal} </div>)
+        return <div> {this.state.signal} </div>
     }
 }
 
