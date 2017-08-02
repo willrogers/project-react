@@ -8,7 +8,9 @@ engines:
       - .js
     ratings:
       paths:
-      - "src/**.js"
+      - src/**
+      - project_react/**
+      - "**.js"
 
   duplication:
     enabled: true
