@@ -9,13 +9,13 @@ engines:
     config:
       extensions:
       - .js
+    ratings:
+      paths:
+      - src/**
+      - "**.js"
 
   duplication:
     enabled: true
     config:
       languages:
         - javascript
-
-ratings:
-  paths:
-  - "**.js"
