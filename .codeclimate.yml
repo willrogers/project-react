@@ -3,6 +3,9 @@ engines:
 
   eslint:
     enabled: true
+    checks:
+      complexity:
+        enabled: true
     config:
       extensions:
       - .js
