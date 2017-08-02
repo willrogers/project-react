@@ -3,15 +3,19 @@ engines:
 
   eslint:
     enabled: true
+    checks:
+      complexity:
+        enabled: true
     config:
       extensions:
       - .js
-    ratings:
-      paths:
-      - "src/**.js"
 
   duplication:
     enabled: true
     config:
       languages:
         - javascript
+
+ratings:
+  paths:
+  - "**.js"
