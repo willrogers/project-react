@@ -9,7 +9,6 @@ engines:
     ratings:
       paths:
       - src/**
-      - project_react/**
       - "**.js"
 
   duplication:
