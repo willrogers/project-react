@@ -1,7 +1,5 @@
 import SignalComponent from '../SignalComponent.js'
 import {expect} from 'chai'
-import {mount, shallow} from 'enzyme'
-import React from 'react'
 
 describe('SignalComponent' , function () {
     it('takes no props', function () {
@@ -17,7 +15,7 @@ describe('SignalComponent' , function () {
 
     it('Should contain the signal state', function(){
         var sigComp = new SignalComponent({})
-        expect(sigComp.state.blob).to.exist
+        expect(sigComp.state.signal.to.exist
     })
 
 
