@@ -4,6 +4,8 @@
 // Import webpack config from its own config file.
 var webpackConfig = require('./webpack.config.js')
 
+console.log("this shouldn't be here")
+
 module.exports = function(config) {
     config.set({
 
