@@ -15,10 +15,38 @@
 
 ## Features: ##
 
-Enter your name in the box provided to see it update on the web-page in real time
+A very simple webpage that shows a Synchrotron pv in real time. Written in Javascript/React, communicating with a python server.
 
-Press the Count button to see it update in real time
 
-Add items into the box provided to see them added to your shopping list in real time
+
+## Testing ##
+
+Below is a description of the different testing utilities used and (my understanding of) their prurpose.
+
+
+### Karma ###
+--Test Runner
+
+This is the top level of abstraction of the testing suite. Karma takes all of the tests that have been written using the components below, and runs them in a variety of browsers.
+
+
+### Mocha ###
+--Testing Framework
+
+Mocha is the testing framework that provides the syntax for writing JavaScript tests, providing the top level structure of a test file. It uses functions such as before/beforeEach and after/afterEach as hooks for set-up and tear-down. The describe method is used as a test-suite, and the the it is used as a test case. i.e describe(some component){ it(should do something like this){ test code goes in here } }
+
+### Chai ###
+--Assertion Library
+
+Chai is used inside the functions of the Testing framework. Functions such as .expect, .equal, .exist are used to anaylse the behaviour, input and output of parts of aspects of the application. I believe this to be more concerened with internal data stores and states of objects.
+
+### Enzyme ###
+--Assertion Library
+
+Another assertion library, like Chai, except with a more UI-centric focus. Developed speifically for React, it is used to test React-Components and allows for the testing and analysis of the VirtualDOM and rendered output of the application.
+
+
+
+
 
 
