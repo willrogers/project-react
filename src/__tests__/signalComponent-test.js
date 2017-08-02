@@ -1,10 +1,24 @@
 import SignalComponent from '../SignalComponent.js'
-var expect = require('chai').expect
+import {expect} from 'chai'
+import {mount, shallow} from 'enzyme'
+import React from 'react'
 
-
-describe('The SignalComponent div' , function () {
+describe('SignalComponent' , function () {
     it('takes no props', function () {
-        var s = new SignalComponent({})
-        expect(Object.keys(s.props).length).to.equal(0)
+        var sigComp = new SignalComponent({})
+        expect(Object.keys(sigComp.props).length).to.equal(0)
     })
+
+    it('should have a receiveUpdate function', function(){
+        var sigComp = new SignalComponent({})
+        expect(sigComp.receiveUpdate).to.be.a('function')
+
+    })
+
+    it('Should contain the signal state', function(){
+        var sigComp = new SignalComponent({})
+        expect(sigComp.state.blob).to.exist
+    })
+
+
 })
