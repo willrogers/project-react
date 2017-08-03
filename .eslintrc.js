@@ -18,19 +18,12 @@ module.exports = {
         "eslint-plugin-react"
     ],
     "rules": {
-        "indent": ["error",4],
+        "indent": ["error", 4],
         "react/jsx-uses-vars": ["error"],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
+        "linebreak-style": [ "error", "unix" ],
+        "quotes": [ "error", "single" ],
+        "semi": [ "error", "always" ],
+        "space-before-function-paren": [ "warn", "never" ],
+        "no-trailing-spaces": "warn"
     }
 };

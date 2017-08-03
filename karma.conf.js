@@ -2,7 +2,7 @@
 // Generated on Wed Jul 12 2017 15:45:57 GMT+0100 (BST)
 
 // Import webpack config from its own config file.
-var webpackConfig = require('./webpack.config.js')
+var webpackConfig = require('./webpack.config.js');
 
 
 module.exports = function(config) {
@@ -27,10 +27,10 @@ module.exports = function(config) {
                 presets: ['es2015']
             },
             filename: function(file) {
-                return file.originalPath.replace(/\.js$/, '.es5.js')
+                return file.originalPath.replace(/\.js$/, '.es5.js');
             },
             sourceFileName: function(file) {
-                return file.originalPath
+                return file.originalPath;
             }
         },
 
@@ -68,5 +68,5 @@ module.exports = function(config) {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
-}
+    });
+};

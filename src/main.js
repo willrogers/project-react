@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import SignalComponent from './SignalComponent'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SignalComponent from './SignalComponent';
 
 //Wrapper component
 class App extends React.Component{
@@ -9,7 +9,7 @@ class App extends React.Component{
             <div>
                 <SignalComponent state={this.props.state} />
             </div>
-        )
+        );
     }
 }
 
@@ -17,5 +17,5 @@ class App extends React.Component{
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
         <App/>, document.getElementById('mount')
-    )
-})
+    );
+});
