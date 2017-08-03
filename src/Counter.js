@@ -1,5 +1,5 @@
-import React from 'react'
- 
+import React from 'react';
+
 /**
  *  * A counter button: tap the button to increase the count.
  *   */
@@ -10,7 +10,7 @@ var Counter = React.createClass({
     getInitialState: function(){
         return {
             count:0,
-        }
+        };
 
     },
 
@@ -18,7 +18,7 @@ var Counter = React.createClass({
 
     //Eventhandler for button click, increases the count property by 1
     handleClick: function(){
-        this.setState({ count: this.state.count+1  })
+        this.setState({ count: this.state.count+1  });
     },
 
 
@@ -31,8 +31,8 @@ var Counter = React.createClass({
           Count: {this.state.count}
                 </button>
             </div>
-        )
+        );
     }
-})
+});
 
-export default Counter
+export default Counter;
