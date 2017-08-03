@@ -3,7 +3,7 @@ import React from 'react';
 //The HelloUser component: Displays the username in a Hello World.
 var HelloUser = React.createClass({
 
-    //Set the initial state: empty to begin with 
+    //Set the initial state: empty to begin with
     getInitialState: function(){
         return {
             name:''
