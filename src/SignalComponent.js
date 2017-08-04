@@ -1,4 +1,4 @@
-import { startMalcolmComms, killMalcolmComms } from './connection.js';
+import {startMalcolmComms, killMalcolmComms} from './connection.js';
 import React from 'react';
 
 export default class SignalComponent extends React.Component{
@@ -9,7 +9,7 @@ export default class SignalComponent extends React.Component{
     }
 
     componentDidMount(){
-        startMalcolmComms(this);
+       startMalcolmComms(this);
     }
 
     receiveUpdate(malcResponse){
