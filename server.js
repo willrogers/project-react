@@ -16,5 +16,7 @@ app.use(webpackDevMiddleware(compiler, {
         colors: true,
     },
     historyApiFallback: true,
+
 }));
 
+app.listen(3000);
