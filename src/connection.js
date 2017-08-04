@@ -1,5 +1,6 @@
 const connection = new WebSocket('ws://localhost:8080/ws');
 
+
 //Called when the pages is loaded - sends a request to malcolm
 export function startMalcolmComms(component){
     connection.onopen = function(){
@@ -13,10 +14,12 @@ export function startMalcolmComms(component){
     };
 }
 
+
 //Send a request to malcolm to stop sending us updates
 export function killMalcolmComms(){
     connection.send(getUnsubscribeRequest());
 }
+
 
 //Generate the subscribe request JSON to send to malcolm
 function generateSubscribeRequest(){
@@ -29,7 +32,8 @@ function generateSubscribeRequest(){
     return subscribeRequest;
 }
 
-//Return the unsu
+
+//Return the unsubscribe request.
 function getUnsubscribeRequest(){
     var unsubscribeRequest = JSON.stringify({
         'typeid': 'malcolm:core/Unsubscribe:1.0',
