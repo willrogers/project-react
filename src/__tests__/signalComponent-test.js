@@ -1,4 +1,6 @@
 import SignalComponent from '../SignalComponent.js';
+import React from 'react'
+import {shallow, simulate} from 'enzyme'
 import {expect} from 'chai';
 import ReactTestUtils from 'react-dom/test-utils';
 
@@ -20,11 +22,16 @@ describe('SignalComponent' , function() {
     });
 
     it('Should be able to receive a response and update state accordingly', function(){
-        var sigComp = new SignalComponent({});
-        ReactTestUtils.renderIntoDocument(sigComp)
-        sigComp.receiveUpdate(4);
-        expect(sigComp.render).to.equal(<div> 4 </div>);
+        var wrapper = shallow(<SignalComponent/>);
+        wrapper.instance().receiveUpdate(4);
+        expect(wrapper.instance().state.signal).to.equal(4);
 
+/*
+       const sigComp = new SignalComponent({});
+       sigComp.receiveUpdate(4);
+        console.log("Hello");
+       expect(sigComp.state.signal).to.equal(4);
+*/
     });
 
 });
