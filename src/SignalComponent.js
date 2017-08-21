@@ -9,11 +9,11 @@ export default class SignalComponent extends React.Component{
     }
 
     componentDidMount(){
-       startMalcolmComms(this);
+        startMalcolmComms(this);
     }
 
     receiveUpdate(malcResponse){
-        this.setState({signal: malcResponse})
+        this.setState({signal: malcResponse});
     }
 
     componentWillUnmount(){
