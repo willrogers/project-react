@@ -1,4 +1,6 @@
 import SignalComponent from '../SignalComponent.js';
+import React from 'react';
+import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
 describe('SignalComponent' , function() {
@@ -18,5 +20,10 @@ describe('SignalComponent' , function() {
         expect(sigComp.state.signal).to.exist;
     });
 
+    it('Should be able to receive a response and update state accordingly', function(){
+        var wrapper = shallow(<SignalComponent/>);
+        wrapper.instance().receiveUpdate(4);
+        expect(wrapper.instance().state.signal).to.equal(4);
+    });
 
 });
