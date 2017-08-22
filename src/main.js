@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignalComponent from './SignalComponent';
+import EPICSComponent from './EPICSComponent';
 
 //Wrapper component
 class App extends React.Component{
     render(){
         return(
             <div>
-                <SignalComponent state={this.props.state} />
+                <DivComponent pvName="SR-DI-EBPM-01:MAXADC_PC" />
             </div>
         );
     }
@@ -15,7 +15,10 @@ class App extends React.Component{
 
 //Event handler fires when actual DOM is loaded, calls the ReactDOM.render method
 document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(
-        <App/>, document.getElementById('mount')
-    );
+    ReactDOM.render(<App/>, document.getElementById('mount'));
 });
+
+
+//Test pv being used (CPU load on IOC):
+//   SR-DI-EBPM-01:MAXADC_PC
+
