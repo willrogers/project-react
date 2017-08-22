@@ -24,5 +24,3 @@ export default class SignalComponent extends React.Component{
         return (<div> {this.state.signal} </div>);
     }
 }
-
-
