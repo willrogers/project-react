@@ -8,7 +8,8 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <DivComponent />
+                <DivComponent block="HELLO" property="label" />
+                <DivComponent block="HELLO" property="signal" />
             </div>
         );
     }
@@ -22,7 +23,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //Test pv being used (CPU load on IOC):
 //   SR-DI-EBPM-01:MAXADC_PC
-
-            
-                // <DivComponent block="HELLO" property="label" />
-                // <DivComponent block="HELLO" property="signal" />

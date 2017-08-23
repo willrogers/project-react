@@ -4,7 +4,7 @@ const connection = new WebSocket('ws://localhost:8080/ws');
 //Called when the pages is loaded - sends a request to malcolm
 export function startMalcolmComms(component){
     connection.onopen = function(){
-        connection.send(generateSubscribeRequest());
+        connection.send(generateSubscribeRequest(component));
     };
 
     //EventHandler that sends malcolms response to the component
@@ -20,15 +20,13 @@ export function killMalcolmComms(){
     connection.send(getUnsubscribeRequest());
 }
 
-
 //Generate the subscribe request JSON to send to malcolm
-function generateSubscribeRequest(){
+function generateSubscribeRequest(component){
     var subscribeRequest = JSON.stringify({
         'typeid' : 'malcolm:core/Get:1.0',
         'id' : 1,
-        'path' : ['HELLO', 'signal']
+        'path' : [ component.props.block, component.props.property ]
     });
-
     return subscribeRequest;
 }
 
@@ -39,7 +37,6 @@ function getUnsubscribeRequest(){
         'typeid': 'malcolm:core/Unsubscribe:1.0',
         'id': 1
     });
-
     return unsubscribeRequest;
 }
 
