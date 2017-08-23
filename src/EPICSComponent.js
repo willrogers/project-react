@@ -1,26 +1,19 @@
-//import {startMalcolmComms, killMalcolmComms} from './connection.js';
+import {startMalcolmComms, killMalcolmComms} from './connection.js';
 import React from 'react';
 
 export class EPICSComponent extends React.Component{
 
     constructor(props){
-        console.log("I am the EPICSComponent Constructor")
         super(props)
-        this.props
+        this.state = {EPICSValue: ''}
     }
 
     componentDidMount(){
-        //startMalcolmComms(this);
+        startMalcolmComms(this); 
     }
 
-
-    render(){
-        return(
-            <div>
-                {this.props.pvName}
-            </div>
-        );
+    receiveUpdate(malcResponse){
+        this.setState({EPICSValue: malcResponse});
     }
 
 }
-//this.props.children}

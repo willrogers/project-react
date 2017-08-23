@@ -24,7 +24,7 @@ export function killMalcolmComms(){
 //Generate the subscribe request JSON to send to malcolm
 function generateSubscribeRequest(){
     var subscribeRequest = JSON.stringify({
-        'typeid' : 'malcolm:core/Subscribe:1.0',
+        'typeid' : 'malcolm:core/Get:1.0',
         'id' : 1,
         'path' : ['HELLO', 'signal']
     });
