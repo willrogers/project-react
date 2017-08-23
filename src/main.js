@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EPICSComponent from './EPICSComponent';
+import {DivComponent} from './DivComponent';
+
 
 //Wrapper component
 class App extends React.Component{

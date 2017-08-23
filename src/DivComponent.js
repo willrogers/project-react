@@ -1,14 +1,23 @@
 import React from 'react';
+import {EPICSComponent} from './EPICSComponent.js'
 
-class DivComponent extends React.Component{
+export class DivComponent extends EPICSComponent{
 
-    constructor(){
+    constructor(props){
+        console.log("I am the DivComponent Constructor")
 
+        super(props)
+        this.pvName = this.props.pvName
     }
 
 
-    render(){
-
-    }
+    // render(){
+    //     return(
+    //         <div>
+    //             {this.props.pvName}
+    //         </div>
+    //     );
+    // }
+    
 
 }

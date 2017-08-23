@@ -1,4 +1,4 @@
-import {startMalcolmComms, killMalcolmComms} from './connection.js';
+//import {startMalcolmComms, killMalcolmComms} from './connection.js';
 import React from 'react';
 
 export default class SignalComponent extends React.Component{

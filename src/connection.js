@@ -4,7 +4,7 @@ const connection = new WebSocket('ws://localhost:8080/ws');
 //Called when the pages is loaded - sends a request to malcolm
 export function startMalcolmComms(component){
     connection.onopen = function(){
-        connection.send(generateSubscribeRequest(component.pvName));
+        connection.send(generateSubscribeRequest());
     };
 
     //EventHandler that sends malcolms response to the component
