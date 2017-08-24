@@ -8,8 +8,10 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <DivComponent block="HELLO" property="label" />
-                <DivComponent block="HELLO" property="signal" />
+                Signal:
+                <DivComponent block="SIGNAL" property="signal"/>
+                ADC:
+                <DivComponent block="ADC" property="adc"/>
             </div>
         );
     }
@@ -20,6 +22,3 @@ document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(<App/>, document.getElementById('mount'));
 });
 
-
-//Test pv being used (CPU load on IOC):
-//   SR-DI-EBPM-01:MAXADC_PC

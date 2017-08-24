@@ -8,10 +8,8 @@ export class DivComponent extends EPICSComponent{
     }
 
     render(){
-        return(<div> dfgdfg {this.state.EPICSValue} </div>);
+        return(<div> {this.state.EPICSValue} </div>);
     }
-
-
 };
 
 

@@ -4,6 +4,9 @@ const connection = new WebSocket('ws://localhost:8080/ws');
 //Called when the pages is loaded - sends a request to malcolm
 export function startMalcolmComms(component){
     connection.onopen = function(){
+        console.log("Connection Component: ");
+        console.log(component);
+
         connection.send(generateSubscribeRequest(component));
     };
 
@@ -11,6 +14,9 @@ export function startMalcolmComms(component){
     connection.onmessage = function(event){
         var response = JSON.parse(event.data);
         component.receiveUpdate(response.value.value);
+
+        console.log("Malcolm response: " + JSON.stringify(response.value.value));
+
     };
 }
 
@@ -27,6 +33,9 @@ function generateSubscribeRequest(component){
         'id' : 1,
         'path' : [ component.props.block, component.props.property ]
     });
+
+    console.log("Malcolm request: " + subscribeRequest);
+    
     return subscribeRequest;
 }
 
