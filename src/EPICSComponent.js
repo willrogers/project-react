@@ -29,4 +29,9 @@ export class EPICSComponent extends React.Component{
     receiveUpdate(malcResponse){
         this.setState({EPICSValue: malcResponse});
     }
+
+    //Probably not the right way to do this
+    render(){
+        return (<p>{this.state.EPICSValue}</p>);
+    }
 }
