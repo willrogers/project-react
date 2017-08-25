@@ -5,11 +5,11 @@ import {EPICSComponent} from './EPICSComponent.js'
 
 export class DivComponent extends EPICSComponent{
 
-    //Props here are set by the instantation in main...
+    //Props here are set by the instantation in main.js...
     constructor(props){
 
         //..call the parent constructor with these props, so that they are
-        //accessible in super methods.
+        //accessible in parent object's methods.
         super(props);
     }
 
@@ -17,7 +17,7 @@ export class DivComponent extends EPICSComponent{
     render(){
 
         //Returns the EPICS Value specified by the parent class (taken from the props
-        //specified in main), wrapped in a <div>
+        //specified in main.js), wrapped in a <div>
         return(<div> {this.state.EPICSValue} </div>);
     }
 };

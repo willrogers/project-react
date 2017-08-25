@@ -3,25 +3,28 @@
 export default class MalcolmConnection{
 
     constructor(){
-        //The connection attribute of this instance of MalcolmConnection is
-        //created with a new websocket.
+        //The WS connection of this instance of MalcolmConnection is created.
         this.connection = new WebSocket('ws://localhost:8080/ws');
     }
 
     //Called from EPICSComponent. Takes said EPICSComponent instance as a parameter 
-    //in order access 
+    //in order to access its methods and properties
     startComms(component){
 
-        //Set the 'self' variable to refer to the MalcolmConnection instance
-        var self = this;
+        //Set the 'self' constant to refer to the MalcolmConnection instance so we can
+        //access it from a different context later on.
+        const self = this;
 
-        //When the event listener 'onopen' is triggered on the connection associated
-        //with this instance of Malcolm...
+        //When the event listener 'onopen' is triggered on the WS connection associated
+        //with this instance of MalcolmConnection...
         this.connection.onopen = function(){
 
-            //...call the send method of this(the websocket) and pass it the return of
-            //the generate subscribe method as a parameter. Self refers to the current 
-            //instance of MalcolmConnection, allowing us to access the desired method
+            //...call the send method of this(websocket, because we are inside a nested
+            //function and therefore 'this' refers to the global object) and pass it the
+            //return of the generateSubscribe method as a parameter.
+            //
+            //Self refers to the current instance of MalcolmConnection, because we
+            //assigned it when we still had access to the local object.
             this.send(self.generateSubscribeRequest(component));
         };
 
@@ -40,27 +43,31 @@ export default class MalcolmConnection{
         };
     }
 
-    //Send a request to malcolm to stop sending us updates
-    killComms(){
-       this.connection.send(getUnsubscribeRequest());
-    }
-
     //Generate the subscribe request JSON to send to malcolm
     generateSubscribeRequest(component){
-        var subscribeRequest = JSON.stringify({
-            'typeid' : 'malcolm:core/Subscribe:1.0',
-            'id' : 1,
-            'path' : [ component.props.block, component.props.property ]
-        });
-       return subscribeRequest;
+
+        //Create the following JSON and convert it to a malcolm-friendly string
+        //take the props of the component to dynamically generate the path.
+        let subscribeRequest = JSON.stringify(
+            {
+                'typeid' : 'malcolm:core/Subscribe:1.0',
+                'id' : 0,
+                'path' : [ component.props.block, component.props.property ]
+            }
+        );
+        return subscribeRequest;
     }
 
     //Return the unsubscribe request.
     getUnsubscribeRequest(){
-        var unsubscribeRequest = JSON.stringify({
-            'typeid': 'malcolm:core/Unsubscribe:1.0',
-            'id': 1
-        });
+
+        //Create the following JSON and convert it to a malcolm-friendly string
+        let unsubscribeRequest = JSON.stringify(
+            {
+                'typeid': 'malcolm:core/Unsubscribe:1.0',
+                'id': 0
+            }
+        );
         return unsubscribeRequest;
     }
 }
