@@ -7,11 +7,11 @@ export class EPICSComponent extends React.Component{
 
     //Create the object with the props passed up from the child component
     constructor(props){
-        
+
         //Call the parent (React.Component) constructor and pass it the props,
         //which origniate from our child component instantiation in main.js
-        super(props)
-        
+        super(props);
+
         //Create the MalcolmConnectio object that we plan to retain as a state
         this.malc = new MalcolmConnection();
 
@@ -29,5 +29,4 @@ export class EPICSComponent extends React.Component{
     receiveUpdate(malcResponse){
         this.setState({EPICSValue: malcResponse});
     }
-
 }

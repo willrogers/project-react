@@ -31,7 +31,7 @@ export default class MalcolmConnection{
         //When the event listener 'onmessage' is triggered on the connection associated
         //with this instance of Malcolm...
         this.connection.onmessage = function(event){
-            
+
             //...parse the JSON recieved (accessed as event.data) and put it in the
             //var: response. Then...
             var response = JSON.parse(event.data);

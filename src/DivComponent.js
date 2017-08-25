@@ -1,7 +1,7 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
 
 import React from 'react';
-import {EPICSComponent} from './EPICSComponent.js'
+import {EPICSComponent} from './EPICSComponent.js';
 
 export class DivComponent extends EPICSComponent{
 
@@ -20,7 +20,7 @@ export class DivComponent extends EPICSComponent{
         //specified in main.js), wrapped in a <div>
         return(<div> {this.state.EPICSValue} </div>);
     }
-};
+}
 
 
 
