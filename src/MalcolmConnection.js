@@ -7,7 +7,7 @@ export default class MalcolmConnection{
         this.connection = new WebSocket('ws://localhost:8080/ws');
     }
 
-    //Called from EPICSComponent. Takes said EPICSComponent instance as a parameter 
+    //Called from EPICSComponent. Takes said EPICSComponent instance as a parameter
     //in order to access its methods and properties
     startComms(component){
 

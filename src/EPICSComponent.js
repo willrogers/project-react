@@ -25,13 +25,13 @@ export class EPICSComponent extends React.Component{
     }
 
     //Called from MalcolmConnection - this applies the response from malcolm
-    //to the component state to allow us to display it 
+    //to the component state to allow us to display it.
     receiveUpdate(malcResponse){
         this.setState({EPICSValue: malcResponse});
     }
 
     //Probably not the right way to do this
     render(){
-        return (<p>{this.state.EPICSValue}</p>);
+        return (<div>{this.state.EPICSValue}</div>);
     }
 }

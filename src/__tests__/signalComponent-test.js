@@ -26,9 +26,8 @@ describe('EPICSComponent' , function() {
 });
 
 describe('DivComponent' , function(){
-    it('Should be able to receive a response and update state accordingly', function(){
-        var wrapper = mount(<DivComponent/>);
-        wrapper.instance().receiveUpdate(4);
-        expect(wrapper.instance().state.EPICSValue).to.equal(4);
+    it('Should render a div', function(){
+        var wrapper = shallow(<DivComponent/>);
+        expect(wrapper.type()).to.equal('div');
     });
 });

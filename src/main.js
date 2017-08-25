@@ -21,7 +21,7 @@ class App extends React.Component{
 }
 
 //Event handler fires when actual DOM is loaded, calls the ReactDOM.render method.
-//Takes the above wrapper component and applies it to the 'mount' location in 
+//Takes the above wrapper component and applies it to the 'mount' location in
 //./www/index.html
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(<App/>, document.getElementById('mount'));
