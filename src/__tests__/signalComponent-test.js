@@ -27,7 +27,7 @@ describe('EPICSComponent' , function() {
 
 describe('DivComponent' , function(){
     it('Should render a div', function(){
-        var wrapper = shallow(<DivComponent/>);
-        expect(wrapper.type()).to.equal('div');
+        var DivComp = shallow(<DivComponent/>);
+        expect(DivComp.type()).to.equal('div');
     });
 });
