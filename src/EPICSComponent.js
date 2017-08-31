@@ -30,7 +30,8 @@ export class EPICSComponent extends React.Component{
         this.setState({EPICSValue: malcResponse});
     }
 
-    //Probably not the right way to do this
+    //We don't want to return anything here as the render is handled in the subclass.
+    //We do need a render method to keep Enzyme happy.
     render(){
         return null;
     }
