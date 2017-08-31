@@ -1,5 +1,4 @@
 import {EPICSComponent} from '../EPICSComponent.js';
-import {DivComponent} from '../DivComponent.js';
 /*eslint-disable no-unused-vars*/
 import React from 'react';
 /*eslint-disable no-unused-vars*/
@@ -22,12 +21,5 @@ describe('EPICSComponent' , function() {
         var EPComp = shallow(<EPICSComponent/>);
         EPComp.instance().receiveUpdate(4);
         expect(EPComp.instance().state.EPICSValue).to.equal(4);
-    });
-});
-
-describe('DivComponent' , function(){
-    it('Should render a div', function(){
-        var DivComp = shallow(<DivComponent/>);
-        expect(DivComp.type()).to.equal('div');
     });
 });

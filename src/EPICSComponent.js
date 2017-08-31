@@ -32,6 +32,6 @@ export class EPICSComponent extends React.Component{
 
     //Probably not the right way to do this
     render(){
-        return (<div>{this.state.EPICSValue}</div>);
+        return null;
     }
 }
