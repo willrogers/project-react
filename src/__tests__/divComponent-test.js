@@ -10,4 +10,11 @@ describe('DivComponent' , function(){
         var DivComp = shallow(<DivComponent/>);
         expect(DivComp.type()).to.equal('div');
     });
+
+    it('Should update the contents of a div', function(){
+        var DivComp = shallow(<DivComponent/>);
+        DivComp.instance().receiveUpdate('foo');
+        expect(DivComp.html()).to.equal('<div> foo </div>');
+    });
+
 });
