@@ -29,16 +29,28 @@ export class EPICSComponent extends React.Component{
         // -EPICSValue is passed down as props to the child
         // -MalcolmConnection is retained as state to obtain the EPICSValue from malcolm
         this.state = {EPICSValue: null, MalcolmConnection: this.malc};
+    }
 
+
+    componentDidMount(){
         //Fire up the communication process in the held MalcolmConnection.
         this.malc.startComms(this);
+        window.addEventListener('unload', this.componentWillUnmount());
     }
+
+
+    componentWillUnmount(){
+        this.malc.killComms();
+        alert('Unmounted');
+    }
+
 
     //Called from MalcolmConnection - this applies the response from malcolm
     //to the component state to allow us to display it.
     receiveUpdate(malcResponse){
         this.setState({EPICSValue: malcResponse});
     }
+
 
     //We don't want to return anything here as the render is handled in the subclass.
     //We do need a render method to keep Enzyme happy.
