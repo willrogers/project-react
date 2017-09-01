@@ -1,10 +1,14 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
-
 export default class MalcolmConnection{
 
-    constructor(){
+
+    constructor(id){
         //The WS connection of this instance of MalcolmConnection is created.
         this.connection = new WebSocket('ws://localhost:8080/ws');
+
+        //The id of the component this connection is held by, to send to malcolm
+        //for unique request ids.
+        this.componentId = id;
     }
 
     //Called from EPICSComponent. Takes said EPICSComponent instance as a parameter
@@ -51,7 +55,7 @@ export default class MalcolmConnection{
         let subscribeRequest = JSON.stringify(
             {
                 'typeid' : 'malcolm:core/Subscribe:1.0',
-                'id' : 0,
+                'id' : this.componentId,
                 'path' : [ component.props.block, component.props.property ]
             }
         );
@@ -59,13 +63,13 @@ export default class MalcolmConnection{
     }
 
     //Return the unsubscribe request.
-    getUnsubscribeRequest(){
+    generateUnsubscribeRequest(){
 
         //Create the following JSON and convert it to a malcolm-friendly string
         let unsubscribeRequest = JSON.stringify(
             {
                 'typeid': 'malcolm:core/Unsubscribe:1.0',
-                'id': 0
+                'id': this.componentId
             }
         );
         return unsubscribeRequest;

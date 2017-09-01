@@ -1,10 +1,9 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
-
 /*eslint-disable no-unused-vars*/
 import React from 'react';
 /*eslint-disable no-unused-vars*/
-
 import {EPICSComponent} from './EPICSComponent.js';
+
 
 export class DivComponent extends EPICSComponent{
 

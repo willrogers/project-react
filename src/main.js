@@ -1,5 +1,4 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {DivComponent} from './DivComponent';
