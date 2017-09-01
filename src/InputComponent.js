@@ -21,7 +21,7 @@ export class InputComponent extends EPICSComponent{
         //Returns the EPICS Value specified by the parent class (taken from the props
         //specified in main.js), wrapped in a readonly input element
         return(
-           <input value={this.state.EPICSValue} readOnly/>
+            <input value={this.state.EPICSValue} readOnly/>
         );
     }
 }
