@@ -1,4 +1,8 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
+
+const subMalcMethod = 'malcolm:core/Subscribe:1.0';
+const unsubMalcMethod = 'malcolm:core/Unsubscribe:1.0';
+
 export default class MalcolmConnection{
 
 
@@ -54,7 +58,7 @@ export default class MalcolmConnection{
         //take the props of the component to dynamically generate the path.
         let subscribeRequest = JSON.stringify(
             {
-                'typeid' : 'malcolm:core/Subscribe:1.0',
+                'typeid' : subMalcMethod,
                 'id' : this.componentId,
                 'path' : [ component.props.block, component.props.property ]
             }
@@ -68,7 +72,7 @@ export default class MalcolmConnection{
         //Create the following JSON and convert it to a malcolm-friendly string
         let unsubscribeRequest = JSON.stringify(
             {
-                'typeid': 'malcolm:core/Unsubscribe:1.0',
+                'typeid': unsubMalcMethod,
                 'id': this.componentId
             }
         );
