@@ -3,10 +3,15 @@
 import MalcolmConnection from './MalcolmConnection.js';
 import React from 'react';
 
+var previousId = 0;
+
 export class EPICSComponent extends React.Component{
 
     //Create the object with the props passed up from the child component
     constructor(props){
+
+        var id = lastId;
+        lastId++;
 
         //Call the parent (React.Component) constructor and pass it the props,
         //which origniate from our child component instantiation in main.js
