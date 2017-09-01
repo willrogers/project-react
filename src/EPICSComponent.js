@@ -5,6 +5,9 @@ import React from 'react';
 //Init the components current id as 0
 var currentId = 0;
 
+//Define the websocket address.
+const webSockAddress = 'ws://localhost:8080/ws';
+
 export class EPICSComponent extends React.Component{
 
     //Create the object with the props passed up from the child component
@@ -20,7 +23,7 @@ export class EPICSComponent extends React.Component{
         super(props);
 
         //Create the MalcolmConnectio object that we plan to retain as a state
-        this.malc = new MalcolmConnection(id);
+        this.malc = new MalcolmConnection(id, webSockAddress);
 
         //Inititialse EPICSComponent state
         // -EPICSValue is passed down as props to the child

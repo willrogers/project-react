@@ -2,9 +2,9 @@
 export default class MalcolmConnection{
 
 
-    constructor(id){
+    constructor(id, webSockAddress){
         //The WS connection of this instance of MalcolmConnection is created.
-        this.connection = new WebSocket('ws://localhost:8080/ws');
+        this.connection = new WebSocket(webSockAddress);
 
         //The id of the component this connection is held by, to send to malcolm
         //for unique request ids.
