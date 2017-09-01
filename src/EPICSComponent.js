@@ -42,7 +42,9 @@ export class EPICSComponent extends React.Component{
 
     //We don't want to return anything here as the render is handled in the subclass.
     //We do need a render method to keep Enzyme happy.
-    render(){
+    render(){ 
         return null;
     }
 }
+
+
