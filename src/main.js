@@ -26,6 +26,7 @@ class App extends React.Component{
                 <InputComponent block="TEMPERATURE3" property="temp3"/>degrees celcius<br/>
                 <InputComponent block="TEMPERATURE4" property="temp4"/>degrees celcius<br/>
             </div>
+
         );
     }
 }
@@ -36,4 +37,3 @@ class App extends React.Component{
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(<App/>, document.getElementById('mount'));
 });
-

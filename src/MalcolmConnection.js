@@ -1,4 +1,8 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
+
+const subMethod = 'malcolm:core/Subscribe:1.0';
+const unsubMethod = 'malcolm:core/Unsubscribe:1.0';
+
 export default class MalcolmConnection{
 
 
@@ -47,6 +51,12 @@ export default class MalcolmConnection{
         };
     }
 
+
+    //Sever the WS connection between the React Component and malcolm
+    killComms(){
+        this.connection.send(this.generateUnsubscribeRequest());
+    }
+
     //Generate the subscribe request JSON to send to malcolm
     generateSubscribeRequest(component){
 
@@ -54,7 +64,7 @@ export default class MalcolmConnection{
         //take the props of the component to dynamically generate the path.
         let subscribeRequest = JSON.stringify(
             {
-                'typeid' : 'malcolm:core/Subscribe:1.0',
+                'typeid' : subMethod,
                 'id' : this.componentId,
                 'path' : [ component.props.block, component.props.property ]
             }
@@ -68,7 +78,7 @@ export default class MalcolmConnection{
         //Create the following JSON and convert it to a malcolm-friendly string
         let unsubscribeRequest = JSON.stringify(
             {
-                'typeid': 'malcolm:core/Unsubscribe:1.0',
+                'typeid': unsubMethod,
                 'id': this.componentId
             }
         );
