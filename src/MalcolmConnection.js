@@ -51,8 +51,9 @@ export default class MalcolmConnection{
         };
     }
 
+
+    //Sever the WS connection between the React Component and malcolm
     killComms(){
-        alert("Hallo");
         this.connection.send(this.generateUnsubscribeRequest());
     }
 

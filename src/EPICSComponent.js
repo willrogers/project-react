@@ -31,25 +31,34 @@ export class EPICSComponent extends React.Component{
         this.state = {EPICSValue: null, MalcolmConnection: this.malc};
     }
 
-
+    //Called just after the EpicsComponent is mounted to the DOM
     componentDidMount(){
-        //Fire up the communication process in the held MalcolmConnection.
+
+        //Set the self variable to reference 'this' - the current EPICSComponent
+        //instance
         const self = this
         
+        //Call startComms() in the currently held MalcolmConnection and pass it a
+        //reference to this EPICSComponent.
         self.malc.startComms(self);
-        // console.log('compDidMount---------');
-        // console.log(this);
-        // console.log(self);
+        
+        //Add an event listener that triggers when the page is closed or refreshed.
         window.addEventListener('beforeunload', function(){
-            // console.log(self);
-            // console.log(this);
+
+            //Call killComms() on the currently held MalcolmConnection ('this' would
+            //refer to the global object - the window)
             self.malc.killComms();
         });
     }
 
-
+    //Called just before the EpicsComponent is explicitly unloaded from the DOM
     componentWillUnmount(){
+        
+        //Set the self variable to reference 'this' - the current EPICSComponent
+        //instance
         const self = this
+        
+        //In the event of an unmount - remove the event listener.
         window.removeEventListener('beforeunload', function(){
             self.malc.killComms();
         });
