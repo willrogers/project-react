@@ -36,12 +36,12 @@ export class EPICSComponent extends React.Component{
 
         //Set the self variable to reference 'this' - the current EPICSComponent
         //instance
-        const self = this
-        
+        const self = this;
+
         //Call startComms() in the currently held MalcolmConnection and pass it a
         //reference to this EPICSComponent.
         self.malc.startComms(self);
-        
+
         //Add an event listener that triggers when the page is closed or refreshed.
         window.addEventListener('beforeunload', function(){
 
@@ -53,11 +53,11 @@ export class EPICSComponent extends React.Component{
 
     //Called just before the EpicsComponent is explicitly unloaded from the DOM
     componentWillUnmount(){
-        
+
         //Set the self variable to reference 'this' - the current EPICSComponent
         //instance
-        const self = this
-        
+        const self = this;
+
         //In the event of an unmount - remove the event listener.
         window.removeEventListener('beforeunload', function(){
             self.malc.killComms();
@@ -74,7 +74,7 @@ export class EPICSComponent extends React.Component{
 
     //We don't want to return anything here as the render is handled in the subclass.
     //We do need a render method to keep Enzyme happy.
-    render(){ 
+    render(){
         return null;
     }
 }
