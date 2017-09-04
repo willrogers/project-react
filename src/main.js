@@ -15,8 +15,16 @@ class App extends React.Component{
                 <DivComponent block="SIGNAL" property="signal"/>
                 <br/>
 
-            
+                ADC:
+                <DivComponent block="ADC" property="adc"/>
+                <br/>
 
+                Storage Ring Temperatures:
+                <br/>
+                <InputComponent block="TEMPERATURE1" property="temp1"/>degrees celcius<br/>
+                <InputComponent block="TEMPERATURE2" property="temp2"/>degrees celcius<br/>
+                <InputComponent block="TEMPERATURE3" property="temp3"/>degrees celcius<br/>
+                <InputComponent block="TEMPERATURE4" property="temp4"/>degrees celcius<br/>
             </div>
             
         );

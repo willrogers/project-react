@@ -36,16 +36,22 @@ export class EPICSComponent extends React.Component{
         //Fire up the communication process in the held MalcolmConnection.
         const self = this
         
-        this.malc.startComms(this);
+        self.malc.startComms(self);
+        // console.log('compDidMount---------');
+        // console.log(this);
+        // console.log(self);
         window.addEventListener('beforeunload', function(){
+            // console.log(self);
+            // console.log(this);
             self.malc.killComms();
         });
     }
 
 
     componentWillUnmount(){
+        const self = this
         window.removeEventListener('beforeunload', function(){
-            this.malc.killComms();
+            self.malc.killComms();
         });
     }
 
