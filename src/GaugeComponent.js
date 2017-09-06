@@ -1,6 +1,7 @@
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
 /*eslint-disable no-unused-vars*/
 import React from 'react';
+import ReactDOM from 'react-dom'
 /*eslint-disable no-unused-vars*/
 import {EPICSComponent} from './EPICSComponent.js';
 
@@ -14,8 +15,9 @@ export class GaugeComponent extends EPICSComponent{
         //accessible in parent object's methods.
         super(props);
 
-
-        var ctx = this.refs.gaugeCanvas.getContext('2d');
+console.log(this.refs.gaugeCanvas);
+        var canvas = ReactDOM.findDOMNode(this.refs.gaugeCanvas);
+        var ctx = canvas.getContext('2d');
         const quarterMark = (canvas.width*0.25);
         const halfMark = (canvas.width*0.5);
         const threeQaurterMark = (canvas.width*0.75);
@@ -85,7 +87,7 @@ export class GaugeComponent extends EPICSComponent{
 
         //Returns the EPICS Value specified by the parent class (taken from the props
         //specified in main.js), wrapped in a <div>
-        return(<canvas  ref={gaugeCanvas} 
+        return(<canvas  ref="gaugeCanvas" 
                         width="1000"
                         height="150"
                         style="border:1px solid #000000">
