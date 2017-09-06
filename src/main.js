@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {DivComponent} from './DivComponent';
 import {InputComponent} from './InputComponent';
+import {GaugeComponent} from './GaugeComponent';
 
 
 //Wrapper component where we specify what kind of EPICSComponents we want, and set
@@ -27,7 +28,7 @@ class App extends React.Component{
                 <InputComponent block="TEMPERATURE4" property="temp4"/>degrees celcius<br/>
 
                 <br/>
-                <GaugeComponent block="MAGNET" property="" />
+                <GaugeComponent block="MAGNET" property="magnet"/>
             </div>
 
         );

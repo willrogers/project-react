@@ -1,3 +1,5 @@
+import * as gaugeLogic from './gauge-script.js'
+
 //Authors: Benedict Wagnall & Will Rogers, Diamond Light Source
 /*eslint-disable no-unused-vars*/
 import React from 'react';
@@ -15,19 +17,19 @@ export class GaugeComponent extends EPICSComponent{
         super(props);
     }
 
-
-//gauge draw
-
-//gauge update
-
-
+    componentDidMount(){
+        //Draw stuff here        
+    }
 
     //React method: Return the following for application to the DOM
     render(){
 
         //Returns the EPICS Value specified by the parent class (taken from the props
         //specified in main.js), wrapped in a <div>
-        return(<canvas ref="gaugeCanvas" width={this.props.width} height={this.props.height}>
+        return(<canvas  id="gaugeCanvas" 
+                        width="1000"
+                        height="150"
+                        style="border:1px solid #000000">
                </canvas>);
     }
 }
