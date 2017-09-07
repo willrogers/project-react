@@ -69,7 +69,9 @@ export default class MalcolmConnection{
                 'path' : [ component.props.block, component.props.property ]
             }
         );
+        //console.log(subscribeRequest);
         return subscribeRequest;
+
     }
 
     //Return the unsubscribe request.

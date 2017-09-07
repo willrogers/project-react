@@ -28,7 +28,7 @@ class App extends React.Component{
                 <InputComponent block="TEMPERATURE4" property="temp4"/>degrees celcius<br/>
 
                 <br/>
-                <GaugeComponent block="MAGNET" property="magnet"/>
+                <GaugeComponent block="COUNTDOWN" property="countdown"/>
             </div>
 
         );

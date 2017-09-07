@@ -11,16 +11,28 @@ const canvasStyle =
     };
 
 export class GaugeComponent extends EPICSComponent{
+    
     constructor(props){
-
-        //..call the parent constructor with these props, so that they are
-        //accessible in parent object's methods.
-        super(props);
+        super(props); 
     }  
 
-
-
     componentDidMount(){
+        super.componentDidMount();
+        this.drawGauge();
+    }
+
+    componentDidUpdate(){
+        
+        const canvas = this.refs.gaugeRef;
+        const context = canvas.getContext('2d');
+  
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        this.drawGauge();
+    }
+
+
+
+    drawGauge(){
         const canvas = this.refs.gaugeRef;
         const context = canvas.getContext('2d');
         const quarterMark = (canvas.width*0.25);
@@ -46,20 +58,17 @@ export class GaugeComponent extends EPICSComponent{
                 this.drawPip(i, context);
             }
         }
-    
-          
+
+        this.drawNeedle(this.state.EPICSValue, context);
     }
 
-    
 
 
     annotateMarker(annoLoc, ctx){
-console.log("annotate called");
         ctx.fillText(""+(annoLoc*0.2)+"", annoLoc, 140);
     }
 
     drawPip(pipLoc, ctx){
-console.log("draw pip called");
         ctx.beginPath();
         ctx.lineWidth="0.5";
         ctx.strokeStyle="#000000";
@@ -68,8 +77,9 @@ console.log("draw pip called");
         ctx.stroke();
     }
 
+
+
     drawMarker(markerLoc, ctx){
-console.log("draw marker called");
         ctx.beginPath();
         ctx.lineWidth="1";
         ctx.strokeStyle="#000000";
@@ -78,13 +88,14 @@ console.log("draw marker called");
         ctx.stroke();
     }
 
-    updateNeedle(epicsVal, ctx){
-console.log("update needle called");
+
+
+    drawNeedle(epicsVal, ctx){
         ctx.beginPath();
         ctx.lineWidth="3";
         ctx.strokeStyle="#ff0000";
-        ctx.moveTo((epicsVal*5), 130);
-        ctx.lineTo((epicsVal*5), 10);
+        ctx.moveTo((epicsVal), 130);
+        ctx.lineTo((epicsVal), 10);
         ctx.stroke();
     }
 
