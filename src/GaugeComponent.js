@@ -73,7 +73,7 @@ export class GaugeComponent extends EPICSComponent{
     drawPip(pipLoc, ctx){
         ctx.beginPath();
         ctx.lineWidth='0.5';
-        ctx.strokeStyle='#000000';
+        ctx.strokeStyle='#0f0f0f';
         ctx.moveTo(pipLoc, 100);
         ctx.lineTo(pipLoc, 130);
         ctx.stroke();
