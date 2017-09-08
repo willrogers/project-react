@@ -40,9 +40,6 @@ class App extends React.Component{
 
                 <LEDComponent block="TESTLED" property="testled" />
                 <br/>
-
-                
-                
             </div>
 
         );
