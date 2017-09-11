@@ -5,6 +5,7 @@ import {DivComponent} from './DivComponent';
 import {InputComponent} from './InputComponent';
 import {GaugeComponent} from './GaugeComponent';
 import {LEDComponent} from './LEDComponent';
+import {WriterComponent} from './WriterComponent';
 
 
 
@@ -37,9 +38,12 @@ class App extends React.Component{
 
                 <br/>
                 <GaugeComponent block="COUNTDOWN" property="countdown"/>
+                <br/>
 
                 <LEDComponent block="TESTLED" property="testled" />
                 <br/>
+                <WriterComponent block="TESTLED" property="testled" />
+
             </div>
 
         );

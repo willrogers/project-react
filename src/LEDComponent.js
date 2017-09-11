@@ -57,10 +57,9 @@ export class LEDComponent extends EPICSComponent{
 
     }
 
-    //React method: Return the following for application to the DOM
+
     render(){
-        //Returns the EPICS Value specified by the parent class (taken from the props
-        //specified in main.js), wrapped in a readonly input element
+
         return(<canvas  ref="ledRef"
             width="150"
             height="150"
