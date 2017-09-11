@@ -14,8 +14,6 @@ const yellowFill = '#FFFF00';
 const greenFill = '#00FF00';
 const errorFill = '#ff00cb';
 
-        this.canvas = this.refs.ledRef;
-        this.context = this.canvas.getContext('2d');
 
 
 export class LEDComponent extends EPICSComponent{
@@ -24,7 +22,7 @@ export class LEDComponent extends EPICSComponent{
     //Props here are set by the instantation in main.js...
     constructor(props){
 
-        //..call the parent constructor with these props, so that they are
+        //..call the parent constructor with these pps, so that they are
         //accessible in parent object's methods.
         super(props);
 
@@ -33,15 +31,16 @@ export class LEDComponent extends EPICSComponent{
     //Perform the parent componentDidMount stuff as well as this specific functionality.
     componentDidMount(){
 
-        // this.canvas = this.refs.ledRef;
-        // this.context = this.canvas.getContext('2d');
+        //Initialise the canvas and context, must be done after mount to access ref.
+        this.canvas = this.refs.ledRef;
+        this.context = this.canvas.getContext('2d');
         super.componentDidMount();
         //Default = black. If you see this then something isn't loading properly
         this.drawCircle(defaultFill);
     }
 
 
-    //On update, redraw the circle with the corresponding colour
+    //On update, redraw the circle with the corresponding colour 
     componentDidUpdate(){
 
         if(this.state.EPICSValue == 0){

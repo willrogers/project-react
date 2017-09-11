@@ -13,101 +13,114 @@ export class GaugeComponent extends EPICSComponent{
         super(props);
     }
 
-    componentDidUpdate(){
-        const canvas = this.refs.gaugeRef;
-        const context = canvas.getContext('2d');
 
-        context.clearRect(0, 0, canvas.width, canvas.height);
+    //Assign the canvas context here to avoid issues with concurrency
+    componentDidMount(){
+        this.canvas = this.refs.gaugeRef;
+        this.context = this.canvas.getContext('2d');
+        super.componentDidMount();
+        this.defineDimensions();
+    }
+    
+
+    //On update, clear the gauge and draw a new one.
+    componentDidUpdate(){
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawGauge();
     }
 
+
+    //Helper method to define 
+    defineDimensions(){
+        //Define marker partition
+        this.quarterMark = (this.canvas.width * 0.25);
+        this.halfMark = (this.canvas.width * 0.5);
+        this.threeQaurterMark = (this.canvas.width * 0.75);
+
+        //Small buffer at bottom of page for annotations
+        this.annotationBuffer = this.canvas.height * 0.1;
+        
+        //Define start/height of each pip
+        this.pipTopCoord = (this.canvas.height * 0.2);
+        this.pipBaseCoord = (this.canvas.height - this.annotationBuffer);
+        
+        //Define start/height of each marker
+        this.markerTopCoord = (this.canvas.height * 0.5);
+        this.markerBaseCoord = (this.canvas.height - this.annotationBuffer);
+        
+        //Define start/height of the needle
+        this.needleTopCoord = (this.canvas.height * 0.9);
+        this.needleBaseCoord = (this.canvas.height - this.annotationBuffer);
+        
+        //Specify the amount of space in between each pip
+        this.pipSize = (this.canvas.width / 200);
+    }
+
+
+    //Draw a gauge on the mounted canvas 
     drawGauge(){
+        //Loop to iterate over the width of the canvas, drawing the appropriate lines
+        //on the canvas. Markers every quarter. draws needle last.
+        for(var i = 0 ; i < this.canvas.width ; i += this.pipSize){
 
-        var canvas = this.refs.gaugeRef;
-        var context = canvas.getContext('2d');
-        //
-        var quarterMark = (canvas.width * 0.25);
-        var halfMark = (canvas.width * 0.5);
-        var threeQaurterMark = (canvas.width * 0.75);
-        //
-        var annotationBuffer = canvas.height * 0.1;
-        //
-        var pipTopCoord = (canvas.height * 0.2);
-        var pipBaseCoord = (canvas.height - annotationBuffer);
-        //
-        var markerTopCoord = (canvas.height * 0.5);
-        var markerBaseCoord = (canvas.height - annotationBuffer);
-        //
-        var needleTopCoord = (canvas.height * 0.9);
-        var needleBaseCoord = (canvas.height - annotationBuffer);
-        //
-        var pipSize = (canvas.width / 200);
-
-        for(var i = 0 ; i < canvas.width ; i += pipSize){
-
-            if(i==quarterMark){
-                this.drawMarker(i, context);
-                this.annotateMarker(i, context);
-
-            } else if (i==halfMark){
-                this.drawMarker(i, context);
-                this.annotateMarker(i, context);
-
-            } else if (i==threeQaurterMark){
-                this.drawMarker(i, context);
-                this.annotateMarker(i, context);
-
+            if(i==this.quarterMark){
+                this.drawMarker(i);
+                
+            } else if (i==this.halfMark){
+                this.drawMarker(i);
+                
+            } else if (i==this.threeQaurterMark){
+                this.drawMarker(i);
+                
             } else {
-                this.drawPip(i, context);
+                this.drawPip(i);
             }
         }
 
-        this.drawNeedle(this.state.EPICSValue, context);
-
+        this.drawNeedle(this.state.EPICSValue);
     }
 
-    annotateMarker(annoLoc, ctx){
-        ctx.fillText(''+(annoLoc)+'', annoLoc, 140);
+    //Draw the pip at the supplied location
+    drawPip(pipLoc){
+        this.context.beginPath();
+        this.context.lineWidth='0.5';
+        this.context.strokeStyle='#0f0f0f';
+        this.context.moveTo(pipLoc, 100);
+        this.context.lineTo(pipLoc, 130);
+        this.context.stroke();
     }
 
-    drawPip(pipLoc, ctx){
-        ctx.beginPath();
-        ctx.lineWidth='0.5';
-        ctx.strokeStyle='#0f0f0f';
-        ctx.moveTo(pipLoc, 100);
-        ctx.lineTo(pipLoc, 130);
-        ctx.stroke();
+    //Draw the marker at the supplied location, call annotate when done.
+    drawMarker(markerLoc){
+        this.context.beginPath();
+        this.context.lineWidth='1';
+        this.context.strokeStyle='#000000';
+        this.context.moveTo(markerLoc, 50);
+        this.context.lineTo(markerLoc, 130);
+        this.context.stroke();
+        this.annotateMarker(markerLoc);
     }
 
-
-
-    drawMarker(markerLoc, ctx){
-        ctx.beginPath();
-        ctx.lineWidth='1';
-        ctx.strokeStyle='#000000';
-        ctx.moveTo(markerLoc, 50);
-        ctx.lineTo(markerLoc, 130);
-        ctx.stroke();
+    //Annotate the marker with the appropriate numeric value.
+    annotateMarker(annoLoc){
+        this.context.fillText(''+(annoLoc)+'', annoLoc, 140);
     }
 
-
-
-    drawNeedle(epicsVal, ctx){
-        ctx.beginPath();
-        ctx.lineWidth='3';
-        ctx.strokeStyle='#ff0000';
-        ctx.moveTo((epicsVal), 130);
-        ctx.lineTo((epicsVal), 10);
-        ctx.stroke();
+    //Draw the needle using the supplied EPICSValue
+    drawNeedle(epicsVal){
+        this.context.beginPath();
+        this.context.lineWidth='3';
+        this.context.strokeStyle='#ff0000';
+        this.context.moveTo((epicsVal), 130);
+        this.context.lineTo((epicsVal), 10);
+        this.context.stroke();
     }
-
 
 
     //React method: Return the following for application to the DOM
     render(){
 
-        //Returns the EPICS Value specified by the parent class (taken from the props
-        //specified in main.js), wrapped in a <div>
+        //Returns a canvas for reference by the above drawing functions.
         return(<canvas  ref="gaugeRef"
             width="1000"
             height="150"
