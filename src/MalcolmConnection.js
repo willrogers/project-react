@@ -43,25 +43,19 @@ export default class MalcolmConnection{
         //with this instance of Malcolm...
         this.connection.onmessage = function(event){
 
-            //...parse the JSON recieved (accessed as event.data) and put it in the
-            //var: response. Then...
+            //...parse the JSON recieved and put it in the var: response. Then...
             var response = JSON.parse(event.data);
 
-            //Null when making a put request. Only call receiveUpdate on update 
+            //...check the type of the message we are being sent. If an update...
             if(response.typeid == updateMethod){
 
-                console.log(response.value);
                 //...call the receiveUpdate method on current component, sending it the
                 //value properties of the JSON received from Malcolm, which contains the pv
                 //data.
                 component.receiveUpdate(response.value.value);
 
-            } else {
-
-                //We're getting an ack msg from the server to say it has received a 
-                //putRequest. No action required at the moment.
-
-            }
+            } // else { The message is an ack to say it received a request. We don't
+              // need to do anything with this unless its an update.}
         };
     }
 
@@ -72,6 +66,7 @@ export default class MalcolmConnection{
     }
 
 
+    //Send a putRequest to Malcolm, writing a value to a pv
     putMalc(component, val){
         this.connection.send(this.generatePutRequest(component, val));
     }
@@ -89,9 +84,7 @@ export default class MalcolmConnection{
                 'path' : [ component.props.block, component.props.property ]
             }
         );
-        //console.log(subscribeRequest);
         return subscribeRequest;
-
     }
 
 
@@ -109,9 +102,11 @@ export default class MalcolmConnection{
     }
 
 
+    //Return a putRequest, specifies a value and path to write it to.
     generatePutRequest(component, inputValue){
 
-        let getRequest = JSON.stringify(
+        //Stringify this JSON into the putRequest var.
+        let putRequest = JSON.stringify(
             {
                 'typeid': putMethod,
                 'id': this.componentId,
@@ -119,6 +114,6 @@ export default class MalcolmConnection{
                 'value': inputValue
             }
         );
-        return getRequest;
+        return putRequest;
     }
 }

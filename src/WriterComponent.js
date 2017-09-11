@@ -12,28 +12,37 @@ export class WriterComponent extends EPICSComponent{
         //..call the parent constructor with these props, so that they are
         //accessible in parent object's methods.
         super(props);
-        this.state = {inputValue: 3};
+        //Initialise the variable to store changes in input
+        this.state = {inputValue: null};
+
+        //Bind the event handlers to this object
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
+
+    //Event handler to keep the inputField updated with user input
     handleChange(event){
-        var newInput = event.target.value;
-        this.setState({inputValue: newInput});
+        this.setState({inputValue: event.target.value});
     }
 
+
+    //Event handler to send the input to the appropriate place and clear user input
+    //field on submit. Calls the EPICSComponent method writeToMalc
     handleSubmit(event){
+        //PreventDefault stops the entire page reloading on submit (strange default!)
         event.preventDefault();
         super.writeToMalc(this.state.inputValue);
+        this.refs.textField.value= "";
     }
+
 
     //React method: Return the following for application to the DOM
     render(){
-        //Returns the EPICS Value specified by the parent class (taken from the props
-        //specified in main.js), wrapped in a readonly input element
+        //A writable input element and button for submission. Sends user input to malcolm
         return(
             <form onSubmit={this.handleSubmit}>
-                <input type="number" onChange={this.handleChange} />
+                <input type="number" onChange={this.handleChange} ref="textField" />
                 <input type="submit" value="Submit" />
             </form>
         );
