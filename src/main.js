@@ -29,10 +29,10 @@ class App extends React.Component{
                 <div id='right'>
                     Storage Ring Temperatures:
                     <br/>
-                    <InputComponent block="TEMPERATURE1" property="temp1"/>&deg;C<br/>
-                    <InputComponent block="TEMPERATURE2" property="temp2"/>&deg;C<br/>
-                    <InputComponent block="TEMPERATURE3" property="temp3"/>&deg;C<br/>
-                    <InputComponent block="TEMPERATURE4" property="temp4"/>&deg;C<br/>
+                    <InputComponent block="TEMPERATURE" property="temp1"/>&deg;C<br/>
+                    <InputComponent block="TEMPERATURE" property="temp2"/>&deg;C<br/>
+                    <InputComponent block="TEMPERATURE" property="temp3"/>&deg;C<br/>
+                    <InputComponent block="TEMPERATURE" property="temp4"/>&deg;C<br/>
 
                 </div>
 
