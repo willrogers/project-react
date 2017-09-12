@@ -13,7 +13,7 @@ describe('InputComponent' , function(){
 
     it('Should be created with no value', function(){
         var InpComp = shallow(<InputComponent/>);
-        expect(InpComp.html()).to.equal('<input readonly=""/>');
+        expect(InpComp.html()).to.equal('<input style="width:50px;" readonly=""/>');
 
     });
 
@@ -22,7 +22,7 @@ describe('InputComponent' , function(){
         InpComp.instance().receiveUpdate('bar');
         //The ' readonly="" ' here is a slight deviation from the code,
         //due to transpilation from ES6 to older standards
-        expect(InpComp.html()).to.equal('<input value="bar" readonly=""/>');
+        expect(InpComp.html()).to.equal('<input value="bar" style="width:50px;" readonly=""/>');
     });
 
 });
