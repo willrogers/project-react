@@ -12,7 +12,7 @@ const defaultFill = '#000000';
 const redFill= '#FF0000';
 const yellowFill = '#FFFF00';
 const greenFill = '#00FF00';
-const errorFill = '#ff00cb';
+const errorFill = '#FF00CB';
 
 
 
@@ -32,6 +32,8 @@ export class LEDComponent extends EPICSComponent{
     componentDidMount(){
 
         //Initialise the canvas and context, must be done after mount to access ref.
+        console.log("componentDidMount called");
+
         this.canvas = this.refs.ledRef;
         this.context = this.canvas.getContext('2d');
         super.componentDidMount();
@@ -42,6 +44,8 @@ export class LEDComponent extends EPICSComponent{
 
     //On update, redraw the circle with the corresponding colour 
     componentDidUpdate(){
+
+         console.log("componentDidUpdate called");
 
         if(this.state.EPICSValue == 0){
             this.drawCircle(redFill);
@@ -60,6 +64,8 @@ export class LEDComponent extends EPICSComponent{
 
     //Draws the LED with the supplied colour
     drawCircle(colour){
+
+        console.log("drawCircle called with " + colour);
 
         this.context.beginPath();
         this.context.arc(75,75,60,0,2*Math.PI);
