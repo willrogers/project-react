@@ -15,7 +15,7 @@ engines:
       - "**.js"
 
   duplication:
-    enabled: true
+    enabled: false
     config:
       languages:
         - javascript
