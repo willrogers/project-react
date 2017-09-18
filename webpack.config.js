@@ -22,8 +22,8 @@ module.exports = {
     },
 
     resolve: {
-        modules: [
-            path.join(__dirname, 'node_modules'),
-        ],
+        modules: [path.join(__dirname, 'node_modules'),],
+        alias: {sinon: 'sinon/pkg/sinon.js'},
+
     },
 };

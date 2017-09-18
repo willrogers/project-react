@@ -31,6 +31,7 @@ export class EPICSComponent extends React.Component{
         this.state = {EPICSValue: null, MalcolmConnection: this.malc};
     }
 
+
     //Called just after the EpicsComponent is mounted to the DOM
     componentDidMount(){
 
@@ -40,16 +41,17 @@ export class EPICSComponent extends React.Component{
 
         //Call startComms() in the currently held MalcolmConnection and pass it a
         //reference to this EPICSComponent.
-        self.malc.startComms(self);
+        self.malc.subscribeMalc(self);
 
         //Add an event listener that triggers when the page is closed or refreshed.
         window.addEventListener('beforeunload', function(){
 
             //Call killComms() on the currently held MalcolmConnection ('this' would
             //refer to the global object - the window)
-            self.malc.killComms();
+            self.malc.unsubscribeMalc();
         });
     }
+
 
     //Called just before the EpicsComponent is explicitly unloaded from the DOM
     componentWillUnmount(){
@@ -60,8 +62,16 @@ export class EPICSComponent extends React.Component{
 
         //In the event of an unmount - remove the event listener.
         window.removeEventListener('beforeunload', function(){
-            self.malc.killComms();
+            self.malc.unsubscribeMalc();
         });
+    }
+
+
+    //Call the putMalc method in the MalcolmConnection object. Used by subcomponents
+    // for writing to a pv.
+    writeToMalc(val){
+        const self = this;
+        self.malc.putMalc(self, val);
     }
 
 

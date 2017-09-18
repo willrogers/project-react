@@ -14,7 +14,10 @@ export class InputComponent extends EPICSComponent{
         //..call the parent constructor with these props, so that they are
         //accessible in parent object's methods.
         super(props);
+        this.state = {EPICSValue: ''};
     }
+
+
 
     //React method: Return the following for application to the DOM
     render(){
