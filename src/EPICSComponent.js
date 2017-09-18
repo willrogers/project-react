@@ -70,7 +70,6 @@ export class EPICSComponent extends React.Component{
     //Call the putMalc method in the MalcolmConnection object. Used by subcomponents
     // for writing to a pv.
     writeToMalc(val){
-        console.log("WRITE TO MALCOLM CALLED")
         const self = this;
         self.malc.putMalc(self, val);
     }

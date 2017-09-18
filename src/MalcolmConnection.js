@@ -55,7 +55,7 @@ export default class MalcolmConnection{
                 component.receiveUpdate(response.value.value);
 
             } // else { The message is an ack to say it received a request. We don't
-              // need to do anything with this unless its an update.}
+            // need to do anything with this unless its an update.}
         };
     }
 
@@ -68,10 +68,6 @@ export default class MalcolmConnection{
 
     //Send a putRequest to Malcolm, writing a value to a pv
     putMalc(component, val){
-        console.log("putMalc component ");
-        console.log(component);
-        console.log("putMalc val ");
-        console.log(val)
         this.connection.send(this.generatePutRequest(component, val));
     }
 

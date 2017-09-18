@@ -7,16 +7,16 @@ import {expect} from 'chai';
 import sinon from 'sinon';
 
 describe('WriterComponent' , function(){
-    it('User input should be passed on form submission', function(){ 
-        
-        var WrtComp = mount(<WriterComponent/>);
-        var WrtStub = sinon.stub(WrtComp.instance(), "handleSubmit").callsFake(
-            function fake(){ return "form submitted"; } );
+
+    var DeepWriter = mount(<WriterComponent/>);
+
+    it('User input should be passed on form submission', function(){
+
+        var WrtStub = sinon.stub(DeepWriter.instance(), 'handleSubmit').callsFake(
+            function fake(){ return 'form submitted'; } );
         const inputEvent = {target: {value:45}, preventDefault:() => {} };
-
-        WrtComp.instance().handleChange(inputEvent);
-        WrtComp.instance().handleSubmit(WrtStub);
-
-        expect(WrtComp.instance().state.inputValue).to.equal(45);
+        DeepWriter.instance().handleChange(inputEvent);
+        DeepWriter.instance().handleSubmit(WrtStub);
+        expect(DeepWriter.instance().state.inputValue).to.equal(45);
     });
 });

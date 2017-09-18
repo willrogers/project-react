@@ -21,7 +21,7 @@ export class GaugeComponent extends EPICSComponent{
         super.componentDidMount();
         this.defineDimensions();
     }
-    
+
 
     //On update, clear the gauge and draw a new one.
     componentDidUpdate(){
@@ -39,19 +39,19 @@ export class GaugeComponent extends EPICSComponent{
 
         //Small buffer at bottom of page for annotations
         this.annotationBuffer = this.canvas.height * 0.1;
-        
+
         //Define start/height of each pip
         this.pipTopCoord = (this.canvas.height * 0.2);
         this.pipBaseCoord = (this.canvas.height - this.annotationBuffer);
-        
+
         //Define start/height of each marker
         this.markerTopCoord = (this.canvas.height * 0.5);
         this.markerBaseCoord = (this.canvas.height - this.annotationBuffer);
-        
+
         //Define start/height of the needle
         this.needleTopCoord = (this.canvas.height * 0.9);
         this.needleBaseCoord = (this.canvas.height - this.annotationBuffer);
-        
+
         //Specify the amount of space in between each pip
         this.pipSize = (this.canvas.width / 200);
     }
@@ -65,13 +65,13 @@ export class GaugeComponent extends EPICSComponent{
 
             if(i==this.quarterMark){
                 this.drawMarker(i);
-                
+
             } else if (i==this.halfMark){
                 this.drawMarker(i);
-                
+
             } else if (i==this.threeQaurterMark){
                 this.drawMarker(i);
-                
+
             } else {
                 this.drawPip(i);
             }

@@ -32,12 +32,12 @@ export class WriterComponent extends EPICSComponent{
     handleSubmit(event){
         //PreventDefault stops the entire page reloading on submit (strange default!)
         event.preventDefault();
-        
+
         //Call parent method with own state.
         super.writeToMalc(this.state.inputValue);
 
         //Clear the textfield on submit.
-        this.refs.textField.value= "";
+        this.refs.textField.value= '';
 
     }
 
