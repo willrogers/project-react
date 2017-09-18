@@ -40,7 +40,7 @@ export class LEDComponent extends EPICSComponent{
     }
 
 
-    //On update, redraw the circle with the corresponding colour 
+    //On update, redraw the circle with the corresponding colour
     componentDidUpdate(){
 
         if(this.state.EPICSValue == 0){

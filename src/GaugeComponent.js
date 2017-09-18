@@ -30,7 +30,7 @@ export class GaugeComponent extends EPICSComponent{
     }
 
 
-    //Helper method to define 
+    //Helper method to define
     defineDimensions(){
         //Define marker partition
         this.quarterMark = (this.canvas.width * 0.25);
@@ -57,7 +57,7 @@ export class GaugeComponent extends EPICSComponent{
     }
 
 
-    //Draw a gauge on the mounted canvas 
+    //Draw a gauge on the mounted canvas
     drawGauge(){
         //Loop to iterate over the width of the canvas, drawing the appropriate lines
         //on the canvas. Markers every quarter. draws needle last.
