@@ -8,7 +8,7 @@ export class RadialGaugeComponent extends EPICSComponent{
 
     constructor(props){
         super(props);
-        this.state={gaugeBits: this.drawGauge(), needleBits: this.drawNeedle()}
+        this.state={gaugeBits: this.drawGauge(), needleBits: this.drawNeedle()};
     }
 
     componentWillUpdate(){
@@ -35,8 +35,8 @@ export class RadialGaugeComponent extends EPICSComponent{
 
         return(
             <g>
-                <polygon 
-                    points={"200,190 200,210 350,200"} 
+                <polygon
+                    points={'200,190 200,210 350,200'}
                     style={{fill:'red'}}
                     transform={'rotate(' + (this.calculateNeedle()) + ' 200 200)'}/>
             </g>
@@ -56,26 +56,26 @@ export class RadialGaugeComponent extends EPICSComponent{
                     <circle cx={200} cy={200} r={20} fill={'red'}/>
                 </g>
                 <g id={'pips'}>
-                        <use className={'pip'} href={'#pip'}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(-30 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(-60 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(-90 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(-120 200 200)"}></use>
-                        <use className={'bigPip'} href={'#bigPip'} transform={"rotate(-150 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(30 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(60 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(90 200 200)"}></use>
-                        <use className={'pip'} href={'#pip'} transform={"rotate(120 200 200)"}></use>
-                        <use className={'bigPip'} href={'#bigPip'} transform={"rotate(150 200 200) "}></use>
+                    <use className={'pip'} href={'#pip'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(-30 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(-60 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(-90 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(-120 200 200)'}></use>
+                    <use className={'bigPip'} href={'#bigPip'} transform={'rotate(-150 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(30 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(60 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(90 200 200)'}></use>
+                    <use className={'pip'} href={'#pip'} transform={'rotate(120 200 200)'}></use>
+                    <use className={'bigPip'} href={'#bigPip'} transform={'rotate(150 200 200) '}></use>
                 </g>
             </g>
-        )
+        );
     }
 
     render(){
         return( <svg width={400} height={400}>
-                    {this.state.gaugeBits}
-                    {this.drawNeedle()}
-                </svg>);
+            {this.state.gaugeBits}
+            {this.drawNeedle()}
+        </svg>);
     }
 }
