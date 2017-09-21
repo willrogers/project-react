@@ -45,7 +45,7 @@ class App extends React.Component{
                 <br/>
                 <WriterComponent block="TESTLED" property="testled" />
                 <br/>
-                <RadialGaugeComponent/>
+                <RadialGaugeComponent block="COUNTDOWN" property="countdown"/>
 
             </div>
 
