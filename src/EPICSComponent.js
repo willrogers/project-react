@@ -29,6 +29,7 @@ export class EPICSComponent extends React.Component{
         // -EPICSValue is passed down as props to the child
         // -MalcolmConnection is retained as state to obtain the EPICSValue from malcolm
         this.state = {EPICSValue: null, MalcolmConnection: this.malc};
+
     }
 
 

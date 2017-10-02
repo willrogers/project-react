@@ -6,6 +6,7 @@ import {InputComponent} from './InputComponent';
 import {GaugeComponent} from './GaugeComponent';
 import {LEDComponent} from './LEDComponent';
 import {WriterComponent} from './WriterComponent';
+import {RadialGaugeComponent} from './RadialGaugeComponent';
 
 
 
@@ -43,6 +44,8 @@ class App extends React.Component{
                 <LEDComponent block="TESTLED" property="testled" />
                 <br/>
                 <WriterComponent block="TESTLED" property="testled" />
+                <br/>
+                <RadialGaugeComponent block="COUNTDOWN" property="countdown"/>
 
             </div>
 
